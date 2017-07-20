@@ -1,2 +1,22 @@
-<h1>Post#new</h1>
-<p>Find me in app/views/post/new.html.erb</p>
+<h2><%= @action == :update ? "Редактирование поста" : "Создание поста" %></h2>
+<% if @post.errors.any? %>
+    <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<%= form_for @post, url: {action: @action}, html: { multipart: true }, method: @action == :update ? :PATCH : :POST  do |f| %>
+    <table>
+      <tr>
+        <td>Название поста:</td><td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <td>Текст:</td><td><%= f.text_area :content %></td>
+      </tr>
+      <tr>
+        <td><%= f.submit @action == :update ? "Изменить" : "Создать" %></td><td></td>
+      </tr>
+    </table>
+<% end %>

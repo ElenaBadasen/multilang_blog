@@ -1,2 +1,6 @@
-<h1>Image#show</h1>
-<p>Find me in app/views/image/show.html.erb</p>
+<% if @image.file.present? %>
+    <%= image_tag @image.file.url %>
+<% end %>
+
+<p><%= text_field_tag "url", request.host + @image.file.url %></p>
+<p><%= link_to "Все изображения", images_path %></p>

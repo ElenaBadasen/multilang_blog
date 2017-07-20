@@ -7,9 +7,11 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false }
 
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, :on => :create
 
   has_many :categories
 
   has_and_belongs_to_many :images
+
+  attr_accessor :file, :file_cache, :current_password
 end

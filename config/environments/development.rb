@@ -53,4 +53,6 @@ Rails.application.configure do
 
 
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  require 'carrierwave/orm/activerecord'
 end

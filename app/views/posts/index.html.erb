@@ -1,2 +1,15 @@
-<h1>Post#index</h1>
-<p>Find me in app/views/post/index.html.erb</p>
+<% @posts.each do |p| %>
+    <p>
+      <%= p.created_at.to_time %>
+    </p>
+    <p>
+      <%= link_to p.name, post_path(@username, p.id) %>
+      <%= link_to "Редактировать", edit_post_path(@username, p.id) %>
+      <%= link_to "Удалить", post_path(@username, p.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить этот пост?" } %>
+    </p>
+    <p>
+      <%= sanitize(p.content) %>
+    </p>
+    <br>
+<% end %>
+<p><%= link_to "Написать новый пост", new_category_post_path(@username, @category.id) %></p>

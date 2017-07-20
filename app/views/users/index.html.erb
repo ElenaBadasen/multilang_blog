@@ -1,3 +1,12 @@
 <% @users.each do |u| %>
-  <p><%= image_tag u.images[0].file.url%> <%= link_to u.name, main_page_path(u.name) %></p>
+  <p>
+    <% if u.images.present? and u.images[0].file.present? %>
+      <%= image_tag u.images[0].file.url %>
+    <% end %>
+    <%= link_to u.name, main_page_path(u.name) %>
+    <%= link_to "Редактировать", edit_user_path(u.id) %>
+    <%= link_to "Удалить", user_path(u.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить этого пользователя?" } %>
+  </p>
 <% end %>
+
+<p><%= link_to "Создать нового пользователя", new_user_path %></p>

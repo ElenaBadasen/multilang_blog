@@ -21,7 +21,7 @@
       <tr>
         <td>Картинка:</td>
         <td>
-          <% if @category.images.present? %>
+          <% if @category.images.present? and @category.images[0].file.present? %>
             <%= image_tag @category.images[0].file.url %>
         <% end %>
           <%= f.file_field :file %>

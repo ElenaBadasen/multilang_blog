@@ -1,2 +1,14 @@
-<h1>Image#index</h1>
-<p>Find me in app/views/image/index.html.erb</p>
+<% @images.each do |image| %>
+  <p>
+    <% if image.file.present? %>
+      <%= link_to(image_tag(image.file.url), image_path(image)) %>
+    <% else %>
+      Нет файла
+    <% end %>
+    <%= link_to "Удалить", image_path(image.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить это изображение?" } %>
+  </p>
+<% end %>
+
+<%= will_paginate @images %>
+
+<p><%= link_to "Загрузить новое изображение", new_image_path %></p>

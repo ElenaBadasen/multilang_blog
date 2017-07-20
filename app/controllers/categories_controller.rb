@@ -13,8 +13,7 @@ class CategoriesController < ApplicationController
   def create
     user = User.find_by(name: params[:username])
     @category = user.categories.create(category_params)
-    @category.images << Image.new
-    @category.images[0].file = category_params[:file]
+    @category.images << Image.new(file: category_params[:file])
     if @category.save and @category.images[0].save
       redirect_to categories_path, notice: 'Категория успешно создана'
     else
@@ -24,6 +23,9 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @username = params[:username]
+    p "HERE", params[:id]
+    @category = Category.find_by(path: params[:id])
   end
 
   def edit
@@ -35,13 +37,9 @@ class CategoriesController < ApplicationController
 
   def update
     @category = Category.find(params[:id])
-    p "HERE", category_params[:file], category_params[:file_cache]
-    p @category
     if category_params[:file].present? or category_params[:file_cache].present?
-      p "HERE1"
       @category.images = []
-      @category.images << Image.new
-      @category.images[0].file = category_params[:file].present? ? category_params[:file] : category_params[:file_cache]
+      @category.images << Image.new(file: category_params[:file])
       @category.images[0].save
     end
     if @category.update(category_params) and @category.images[0].save
