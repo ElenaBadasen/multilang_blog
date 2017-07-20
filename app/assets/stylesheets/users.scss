@@ -1,3 +1,55 @@
-// Place all the styles related to the user controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.admin_header {
+  visibility: hidden;
+}
+
+body {
+  background-image: url("http://i.imgur.com/JNSG7Ul.jpg");
+  background-size: cover;
+  text-align: center;
+}
+
+.user {
+  background-color: rgba(239, 239, 239, 0.71);
+  display: inline-block;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.username {
+  display: inline;
+}
+
+.avatar {
+  display: inline;
+  float: left;
+}
+
+.username {
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 50px;
+  float: left;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.edit_links {
+  padding-top: 120px;
+}
+
+.username_link, .edit_link, .new_user_link {
+  color: rgb(21, 81, 62);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.users {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -212px 0 0 -122px;
+}
+
+.new_user {
+  background-color: rgba(239, 239, 239, 0.71);
+  padding: 15px;
+}

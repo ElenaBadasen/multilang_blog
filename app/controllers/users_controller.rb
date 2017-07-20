@@ -14,8 +14,9 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     @password_correct = true
 
-    @user.images << Image.new
-    @user.images[0].file = user_params[:file]
+    if user_params[:file].present?
+      @user.images << Image.new(file: user_params[:file])
+    end
     if @user.save and @user.images[0].save
       redirect_to users_path, notice: 'Пользователь успешно создан'
     else
@@ -38,8 +39,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if user_params[:file].present?
       @user.images = []
-      @user.images << Image.new
-      @user.images[0].file = user_params[:file]
+      @user.images << Image.new(file: user_params[:file])
       @user.images[0].save
     end
     @user.name = user_params[:name]
