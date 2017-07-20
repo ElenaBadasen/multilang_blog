@@ -8,9 +8,12 @@ html {
 }
 
 body {
-  background-image: url("http://i.imgur.com/ArL9N8Y.jpg");
+  background: url("http://i.imgur.com/ArL9N8Y.jpg") no-repeat center center fixed;
   background-size: cover;
   margin:0px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
 }
 
 .welcome_image_area {
@@ -59,7 +62,7 @@ h1 {
 }
 
 .welcome_text {
-  width: 500px;
+  max-width: 500px;
   display: inline-block;
   text-align: left;
   font-size: 40px;
@@ -93,6 +96,47 @@ h1 {
 }
 
 .new_category_link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
+}
+
+.content {
+  text-align: left;
+  font-size: 25px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.datetime {
+  text-align: left;
+  font-size: 35px;
+}
+
+.contents {
+  display:inline-block;
+}
+
+.posts {
+  width: 700px;
+}
+
+.new_post_link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
+  font-size: 20px;
+}
+
+.post_name, .edit_links {
+  text-align: left;
+}
+
+.post_name_link {
+  font-size: 35px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
+}
+
+.edit_link {
   text-decoration: none;
   color: rgba(0, 0, 0, 1);
 }

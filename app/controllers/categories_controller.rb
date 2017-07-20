@@ -27,7 +27,6 @@ class CategoriesController < ApplicationController
   def show
     @users = User.all
     @username = params[:username]
-    p "HERE", params[:id]
     @category = Category.find_by(path: params[:id])
   end
 

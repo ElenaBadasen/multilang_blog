@@ -11,7 +11,7 @@
 
   <% @categories.each do |c| %>
       <div class="category">
-        <%= image_tag c.images[0].file.url, class:"category_image" %>
+        <%= link_to(image_tag(c.images[0].file.url, class:"category_image"), category_posts_path(@username, c.path)) %>
         <br>
         <%= link_to c.name, category_posts_path(@username, c.path), class:"category_name_link" %>
         <br>
