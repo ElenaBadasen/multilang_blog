@@ -10,9 +10,21 @@
 
 <body>
 
-<div class="admin_header">
-  <p><%= link_to "Редактировать пользователей", users_path %></p>
-  <p><%= link_to "Редактировать изображения", images_path %></p>
+<div class="welcome_image_area">
+  <h1>
+    <a href="/" class="typewrite" data-period="1000" data-type='[ "it came from the woods", "(most strange things do)" ]'>
+      <span class="wrap"></span>
+    </a>
+  </h1>
+</div>
+
+<div class="header">
+  <div class="link_div"><%= link_to "Главная", users_path, class:"menu_link" %></div>
+  <% @users.each do |u| %>
+      <div class="link_div"><%= link_to u.name, main_page_path(u.name), class:"menu_link" %></div>
+  <% end %>
+  <div class="link_div"><%= link_to "Редактировать пользователей", users_path, class:"menu_link" %></div>
+  <div class="link_div"><%= link_to "Редактировать изображения", images_path, class:"menu_link" %></div>
 </div>
 
 <%= yield %>

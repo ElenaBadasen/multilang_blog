@@ -1,10 +1,12 @@
 class CategoriesController < ApplicationController
   def index
+    @users = User.all
     @username = params[:username]
-    @categories = Category.all
+    @categories = User.find_by(name: @username).categories
   end
 
   def new
+    @users = User.all
     @category = Category.new
     @action = :create
     render :new_and_edit
@@ -23,12 +25,14 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @users = User.all
     @username = params[:username]
     p "HERE", params[:id]
     @category = Category.find_by(path: params[:id])
   end
 
   def edit
+    @users = User.all
     @user = User.find_by(name: params[:username])
     @category = Category.find(params[:id])
     @action = :update

@@ -2,7 +2,97 @@
   visibility: visible;
 }
 
+html {
+  margin: 0px;
+  padding: 0px;
+}
+
 body {
   background-image: url("http://i.imgur.com/ArL9N8Y.jpg");
   background-size: cover;
+  margin:0px;
+}
+
+.welcome_image_area {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+
+}
+
+.typewrite {
+  color: rgba(255, 255, 255, 1);
+  text-decoration: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -212px 0 0 -550px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 100px;
+}
+
+.wrap {
+  text-align: center;
+}
+
+.main_block {
+  background-color: rgba(255, 255, 255, 1);
+  padding-bottom: 0px;
+  margin-bottom: -20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.header {
+  background-color: rgba(255, 255, 255, 1);
+  padding: 20px;
+  text-align: center;
+}
+
+.link_div {
+  display: inline;
+  padding-right: 10px;
+}
+
+.welcome_text {
+  width: 500px;
+  display: inline-block;
+  text-align: left;
+  font-size: 40px;
+  padding-bottom: 40px;
+}
+
+.category_image {
+  width: 300px;
+  height: 300px;
+}
+
+.category {
+  padding: 20px;
+}
+
+.category_name_link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
+  font-size: 40px;
+}
+
+.edit_category_link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
+}
+
+.menu_link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
+  padding: 3px;
+}
+
+.new_category_link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
 }

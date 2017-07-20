@@ -1,21 +1,26 @@
 <div class="users">
-  <% @users.each do |u| %>
-    <div class="user">
-      <div class="avatar">
-        <% if u.images.present? and u.images[0].file.present? %>
-          <%= image_tag u.images[0].file.url %>
-        <% end %>
-      </div>
-      <div class="username">
-        <%= link_to u.name, main_page_path(u.name), class:"username_link" %>
-      </div>
-      <div class="edit_links">
-        <%= link_to "Редактировать", edit_user_path(u.id), class:"edit_link" %>
-        <%= link_to "Удалить", user_path(u.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить этого пользователя?" }, class:"edit_link" %>
-      </div>
-    </div>
-    <br>
-  <% end %>
-
-  <div class="new_user"><%= link_to "Создать нового пользователя", new_user_path, class:"new_user_link" %></div>
+  <table>
+    <% @users.each do |u| %>
+      <tr><td>
+        <div class="user">
+          <div class="avatar">
+            <% if u.images.present? and u.images[0].file.present? %>
+              <%= link_to(image_tag(u.images[0].file.url, class:"avatar_image"), main_page_path(u.name)) %>
+            <% end %>
+          </div>
+          <div class="username">
+            <%= link_to u.name, main_page_path(u.name), class:"username_link" %>
+          </div>
+          <div class="edit_links">
+            <%= link_to "Редактировать", edit_user_path(u.id), class:"edit_link" %>
+            <%= link_to "Удалить", user_path(u.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить этого пользователя?" }, class:"edit_link" %>
+          </div>
+        </div>
+        <br>
+      </td></tr>
+    <% end %>
+    <tr><td>
+      <div class="new_user"><%= link_to "Создать нового пользователя", new_user_path, class:"new_user_link" %></div>
+    </td></tr>
+  </table>
 </div>

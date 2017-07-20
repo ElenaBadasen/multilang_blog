@@ -12,36 +12,38 @@
 
 
 <%= form_for @user, url: {action: @action}, html: { multipart: true }, method: @action == :update ? :PATCH : :POST do |f| %>
-    <table>
-      <tr>
-        <td>Имя пользователя:</td><td><%= f.text_field :name %></td>
-      </tr>
-      <tr>
-        <td>E-mail:</td><td><%= f.text_field :email %></td>
-      </tr>
-      <% if @action == :update %>
+    <div class="params">
+      <table>
         <tr>
-          <td>Старый пароль:</td><td><%= f.password_field :current_password %></td>
+          <td>Имя пользователя:</td><td><%= f.text_field :name %></td>
         </tr>
-      <% end %>
-      <tr>
-        <td>Новый пароль:</td><td><%= f.password_field :password %></td>
-      </tr>
-      <tr>
-        <td>Подтверждение пароля:</td><td><%= f.password_field :password_confirmation %></td>
-      </tr>
-      <tr>
-        <td>Аватар:</td>
-        <td>
-          <% if @user.images.present? and @user.images[0].file.present? %>
-              <%= image_tag @user.images[0].file.url %>
-          <% end %>
-          <%= f.file_field :file %>
-          <%= f.hidden_field :file_cache %>
-        </td>
-      </tr>
-      <tr>
-        <td><%= f.submit @action == :update ? "Изменить" : "Создать" %></td><td></td>
-      </tr>
-    </table>
+        <tr>
+          <td>E-mail:</td><td><%= f.text_field :email %></td>
+        </tr>
+        <% if @action == :update %>
+          <tr>
+            <td>Старый пароль:</td><td><%= f.password_field :current_password %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td>Новый пароль:</td><td><%= f.password_field :password %></td>
+        </tr>
+        <tr>
+          <td>Подтверждение пароля:</td><td><%= f.password_field :password_confirmation %></td>
+        </tr>
+        <tr>
+          <td>Аватар:</td>
+          <td>
+            <% if @user.images.present? and @user.images[0].file.present? %>
+                <%= image_tag @user.images[0].file.url %>
+            <% end %>
+            <%= f.file_field :file %>
+            <%= f.hidden_field :file_cache %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.submit @action == :update ? "Изменить" : "Создать" %></td><td></td>
+        </tr>
+      </table>
+    </div>
 <% end %>
