@@ -1,0 +1,3 @@
+<% @users.each do |u| %>
+  <p><%= image_tag u.images[0].file.url%> <%= link_to u.name, main_page_path(u.name) %></p>
+<% end %>

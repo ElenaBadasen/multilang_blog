@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   def index
   end
 
-  def new
+  def new_and_edit
   end
 
   def create

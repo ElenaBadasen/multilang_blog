@@ -1,6 +1,21 @@
 Rails.application.routes.draw do
 
-  resources :categories do
-    resources :posts, shallow: true
+  get 'admin/login'
+
+  root to: 'users#index', as: 'users'
+
+  resources :users
+
+  resources :images
+
+  scope ':username' do
+    resources :categories do
+      resources :posts, shallow: true
+    end
+
+    root to: 'categories#index', as: 'main_page'
   end
+
+  get 'login', to: 'admin#login', as: 'login'
+
 end

@@ -6,7 +6,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
+  test "should get new_and_edit" do
     get categories_new_url
     assert_response :success
   end
