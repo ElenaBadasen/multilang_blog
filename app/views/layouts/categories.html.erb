@@ -52,5 +52,11 @@
 <%= yield %>
 </div>
 <div class="up"><a class="up_link">Наверх</a></div>
+
+<% if @users.where(name: @username)[0].custom_css.present? %>
+    <style type="text/css">
+      <%= sanitize(@users.where(name: @username)[0].custom_css) %>
+    </style>
+<% end %>
 </body>
 </html>

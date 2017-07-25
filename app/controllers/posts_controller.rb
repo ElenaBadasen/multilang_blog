@@ -48,7 +48,7 @@ class PostsController < ApplicationController
     @category = Category.find_by(path: params[:category_id])
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to post_path(@post), notice: 'Пост успешно изменён.'
+      redirect_to post_path(params[:username], @post), notice: 'Пост успешно изменён.'
     else
       @action = :update
       render :new_and_edit

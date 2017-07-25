@@ -29,6 +29,9 @@
             <tr>
               <td>E-mail:</td><td><%= f.text_field :email %></td>
             </tr>
+            <tr>
+              <td>CSS:</td><td><%= f.text_area :custom_css %></td>
+            </tr>
             <% if @action == :update %>
               <tr>
                 <td>Старый пароль:</td><td><%= f.password_field :current_password %></td>

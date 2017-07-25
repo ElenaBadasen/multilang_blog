@@ -10,7 +10,6 @@ body {
   background-size: cover;
   text-align: center;
   height: 100%;
-  overflow:hidden;
 }
 
 html {
@@ -139,4 +138,9 @@ img.bg {
   padding: 15px;
   border-radius: 15px;
   display: block;
+}
+
+#user_custom_css {
+  width: 500px;
+  height: 300px;
 }

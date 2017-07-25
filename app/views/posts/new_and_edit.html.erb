@@ -1,6 +1,8 @@
 <div class="main_block">
   <div class="new_and_edit">
 
+    <div><%= link_to @category.name, category_posts_path(@username, @category.path), class:"category_link" %></div>
+
 <h2><%= @action == :update ? "Редактирование поста" : "Создание поста" %></h2>
     <div class="table_div">
       <table>

@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     @password_correct = true
 
+
     if user_params[:file].present?
       @user.images << Image.new(file: user_params[:file])
     end
@@ -44,6 +45,7 @@ class UsersController < ApplicationController
     end
     @user.name = user_params[:name]
     @user.email = user_params[:email]
+    @user.custom_css = user_params[:custom_css]
     @password_correct = true
     if params[:password].present?
       if @user.authenticate(params[:current_password]) == false
@@ -77,7 +79,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:file, :file_cache, :name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:file, :file_cache, :name, :email, :custom_css, :password, :password_confirmation)
   end
 
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'admin/login'
+  get 'login', to: 'admin#login', as: 'login'
 
   root to: 'users#index', as: 'users'
 
@@ -16,6 +16,6 @@ Rails.application.routes.draw do
     root to: 'categories#index', as: 'main_page'
   end
 
-  get 'login', to: 'admin#login', as: 'login'
+
 
 end
