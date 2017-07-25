@@ -1,5 +1,6 @@
+<br><br>
 <% if @image.file.present? %>
-    <%= image_tag @image.file.url %>
+    <%= image_tag @image.file.url, class:"big_image" %>
 <% end %>
 
 <p><%= text_field_tag "url", request.host + @image.file.url %></p>

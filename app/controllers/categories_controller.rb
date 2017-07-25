@@ -29,10 +29,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @users = User.all
-    @username = params[:username]
-    @header_category = @categories.where(destination: "header")[0]
-    @category = Category.find_by(path: params[:id])
+    redirect_to categories_path
   end
 
   def edit
