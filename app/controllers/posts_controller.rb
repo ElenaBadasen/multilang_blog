@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @username = params[:username]
     @category = Category.find_by(path: params[:category_id])
     @post = Post.new
     @action = :create
@@ -15,6 +16,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    @username = params[:username]
     @category = Category.find_by(path: params[:category_id])
     @post = @category.posts.create(post_params)
     if @post.save
@@ -33,6 +35,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @username = params[:username]
     @users = User.all
     @post = Post.find(params[:id])
     @category = @post.category
@@ -41,6 +44,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    @username = params[:username]
     @category = Category.find_by(path: params[:category_id])
     @post = Post.find(params[:id])
     if @post.update(post_params)

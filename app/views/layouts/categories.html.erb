@@ -29,7 +29,14 @@
 <div class="header">
   <div class="link_div"><%= link_to "Главная", users_path, class:"menu_link" %></div>
   <% @users.each do |u| %>
-      <div class="link_div"><%= link_to u.name, main_page_path(u.name), class:"menu_link" %></div>
+      <div class="link_div"><%= link_to u.name, main_page_path(u.name), class:"menu_link", id:u.name %></div>
+      <% if u.name == @username %>
+          <style type="text/css">
+            #<%= u.name %> {
+              font-weight: bold;
+            }
+          </style>
+      <% end %>
   <% end %>
   <div class="link_div"><%= link_to "Редактировать изображения", images_path, class:"menu_link" %></div>
 </div>

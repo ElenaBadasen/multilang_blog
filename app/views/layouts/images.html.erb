@@ -15,10 +15,10 @@
     <div class="link_div"><%= link_to "Главная", users_path, class:"menu_link" %></div>
     <% @users.each do |u| %>
         <div class="link_div">
-          <%= link_to u.name, main_page_path(u.name), class:"menu_link" %>
+          <%= link_to u.name, main_page_path(u.name), class:"menu_link", id:u.name %>
         </div>
     <% end %>
-    <div class="link_div"><%= link_to "Редактировать изображения", images_path, class:"menu_link" %></div>
+    <div class="link_div"><%= link_to "Редактировать изображения", images_path, class:"menu_link", id:"images_link" %></div>
   </div>
   <%= yield %>
   <div class="up_images"><a class="up_link">Наверх</a></div>
