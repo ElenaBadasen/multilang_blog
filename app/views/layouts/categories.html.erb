@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TivelWebsite</title>
+  <title>
+    <% if @header_category.present? or @category.present? %>
+        <% c = @header_category.present? ? @header_category : @category %>
+        <%= c.name.split("\\n").join(" ") %>
+    <% end %>
+
+  </title>
   <%= csrf_meta_tags %>
 
   <%= stylesheet_link_tag    'categories', media: 'all' %>
