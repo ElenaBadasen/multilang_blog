@@ -3,17 +3,21 @@ class CategoriesController < ApplicationController
     @users = User.all
     @username = params[:username]
     @categories = User.find_by(name: @username).categories
+    @header_category = @categories.where(destination: "header")[0]
   end
 
   def new
     @users = User.all
     @category = Category.new
     @action = :create
+    @header_category = @categories.where(destination: "header")[0]
     render :new_and_edit
   end
 
   def create
+    @users = User.all
     user = User.find_by(name: params[:username])
+    @header_category = @categories.where(destination: "header")[0]
     @category = user.categories.create(category_params)
     @category.images << Image.new(file: category_params[:file])
     if @category.save and @category.images[0].save
@@ -27,6 +31,7 @@ class CategoriesController < ApplicationController
   def show
     @users = User.all
     @username = params[:username]
+    @header_category = @categories.where(destination: "header")[0]
     @category = Category.find_by(path: params[:id])
   end
 
@@ -35,11 +40,14 @@ class CategoriesController < ApplicationController
     @user = User.find_by(name: params[:username])
     @category = Category.find(params[:id])
     @action = :update
+    @header_category = Category.where(destination: "header")[0]
     render :new_and_edit
   end
 
   def update
+    @users = User.all
     @category = Category.find(params[:id])
+    @header_category = Category.where(destination: "header")[0]
     if category_params[:file].present? or category_params[:file_cache].present?
       @category.images = []
       @category.images << Image.new(file: category_params[:file])
@@ -70,6 +78,6 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:picture, :picture_cache, :name, :path, :description, :user, :file, :file_cache)
+    params.require(:category).permit(:picture, :picture_cache, :name, :path, :destination, :description, :user, :file, :file_cache)
   end
 end

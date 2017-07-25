@@ -1,12 +1,22 @@
+<div class="main_block">
+<div class="new_and_edit">
+
 <h2><%= @action == :update ? "Редактирование категории" : "Создание категории" %></h2>
+<div class="table_div">
+<table>
 <% if @category.errors.any? %>
+    <tr><td>
+      <div class="errors">
     <ul>
       <% @category.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
       <% end %>
     </ul>
+      </div>
+    </td></tr>
 <% end %>
 
+<tr><td>
 <%= form_for @category, url: {action: @action}, html: { multipart: true }, method: @action == :update ? :PATCH : :POST  do |f| %>
     <table>
       <tr>
@@ -16,13 +26,16 @@
         <td>Путь к категории:</td><td><%= f.text_field :path %></td>
       </tr>
       <tr>
+        <td>Назначение:</td><td><%= f.select :destination, options_for_select(Category.destinations.keys.map{|x| [Category.any_destination_to_text(x), x]}, @category.destination) %></td>
+      </tr>
+      <tr>
         <td>Описание:</td><td><%= f.text_area :description %></td>
       </tr>
       <tr>
         <td>Картинка:</td>
         <td>
           <% if @category.images.present? and @category.images[0].file.present? %>
-            <%= image_tag @category.images[0].file.url %>
+            <%= image_tag @category.images[0].file.url, width:"100px" %>
         <% end %>
           <%= f.file_field :file %>
           <%= f.hidden_field :file_cache %>
@@ -33,3 +46,8 @@
       </tr>
     </table>
 <% end %>
+</td></tr>
+</table>
+</div>
+</div>
+</div>

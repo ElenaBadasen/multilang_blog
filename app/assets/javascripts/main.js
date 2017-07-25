@@ -54,3 +54,31 @@ window.onload = function() {
     css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
     document.body.appendChild(css);
 };
+$(document).ready(function() {
+    $(".back_button").click(function () {
+        window.location.href = "/";
+    });
+
+    $(".arrow").click(function () {
+        var element_to_scroll_to = $('.header')[0];
+        $('html, body').animate({ scrollTop: $(element_to_scroll_to).offset().top }, 500);
+    });
+
+    $(".up_link").click(function () {
+        var element_to_scroll_to = $('.header')[0];
+        $('html, body').animate({ scrollTop: $(element_to_scroll_to).offset().top }, 500);
+    });
+
+    $('.up').hide();
+
+    $(window).scroll(function() {
+        if($(this).scrollTop() >= document.documentElement.clientWidth) {
+            console.log("HERE");
+            $('.up').fadeIn();
+        } else {
+            console.log("HERE1");
+            $('.up').fadeOut();
+        }
+    });
+
+});

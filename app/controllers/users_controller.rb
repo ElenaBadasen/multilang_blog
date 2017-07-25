@@ -43,6 +43,7 @@ class UsersController < ApplicationController
       @user.images[0].save
     end
     @user.name = user_params[:name]
+    @user.email = user_params[:email]
     @password_correct = true
     if params[:password].present?
       if @user.authenticate(params[:current_password]) == false

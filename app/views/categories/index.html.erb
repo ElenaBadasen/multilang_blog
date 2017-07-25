@@ -1,23 +1,26 @@
-
 <div class="main_block">
-  <div class="welcome_text">
-    Раз два три четыре пять<br>
-    Вышел зайчик погулять<br>
-    Вдруг охотник выбегает<br>
-    Прямо в зайчика стреляет<br>
-    Пиф паф ойойой<br>
-    Умирает зайчик мой<br>
-  </div>
+  <% if @header_category.present? %>
+    <div>
+      <%= link_to "Редактировать", edit_category_path(@username, @header_category.id), class:"edit_category_link" %>
+      <%= link_to "Удалить", category_path(@username, @header_category.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить эту категорию?" }, class:"edit_category_link" %>
+    </div>
+    <div class="welcome_text">
+      <%= @header_category.description %>
+    </div>
+  <% end %>
+
 
   <% @categories.each do |c| %>
-      <div class="category">
-        <%= link_to(image_tag(c.images[0].file.url, class:"category_image"), category_posts_path(@username, c.path)) %>
-        <br>
-        <%= link_to c.name, category_posts_path(@username, c.path), class:"category_name_link" %>
-        <br>
-        <%= link_to "Редактировать", edit_category_path(@username, c.id), class:"edit_category_link" %>
-        <%= link_to "Удалить", category_path(@username, c.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить эту категорию?" }, class:"edit_category_link" %>
-      </div>
+      <% if c.destination == "basic" %>
+        <div class="category">
+          <%= link_to(image_tag(c.images[0].file.url, class:"category_image"), category_posts_path(@username, c.path)) %>
+          <br>
+          <%= link_to c.name, category_posts_path(@username, c.path), class:"category_name_link" %>
+          <br>
+          <%= link_to "Редактировать", edit_category_path(@username, c.id), class:"edit_category_link" %>
+          <%= link_to "Удалить", category_path(@username, c.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить эту категорию?" }, class:"edit_category_link" %>
+        </div>
+      <% end %>
   <% end %>
   <p><%= link_to "Создать новую категорию", new_category_path(@username), class:"new_category_link" %></p>
 </div>

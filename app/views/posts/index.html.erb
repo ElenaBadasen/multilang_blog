@@ -1,18 +1,18 @@
 
 <div class="main_block">
   <div class="contents">
-    <div class="welcome_text">
-      Раз два три четыре пять<br>
-      Вышел зайчик погулять<br>
-      Вдруг охотник выбегает<br>
-      Прямо в зайчика стреляет<br>
-      Пиф паф ойойой<br>
-      Умирает зайчик мой<br>
-    </div>
-
+    <% if @category.present? %>
+      <div>
+        <%= link_to "Редактировать", edit_category_path(@username, @category.id), class:"edit_category_link" %>
+        <%= link_to "Удалить", category_path(@username, @category.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить эту категорию?" }, class:"edit_category_link" %>
+      </div>
+      <div class="welcome_text">
+        <%= @category.description %>
+      </div>
+    <% end %>
     <div class="posts">
 
-      <div><%= link_to "Написать новый пост", new_category_post_path(@username, @category.id), class:"new_post_link" %></div>
+      <div><%= link_to "Написать новый пост", new_category_post_path(@username, @category.path), class:"new_post_link" %></div>
       <br>
       <br>
 

@@ -12,25 +12,41 @@
 
 <div class="welcome_image_area">
   <h1>
-    <a href="/" class="typewrite" data-period="1000" data-type='[ "it came from the woods", "(most strange things do)" ]'>
-      <span class="wrap"></span>
-    </a>
+    <div class="typewrite_div">
+      <a class="typewrite" data-period="1000" data-type='[
+      <% if @header_category.present? or @category.present? %>
+        <% c = @header_category.present? ? @header_category : @category %>
+        <%= c.name.split("\\n").map{|x| "\"" + x + "\"" }.join(", ") %>
+      <% end %>
+       ]'>
+        <span class="wrap"></span>
+      </a>
+    </div>
   </h1>
+  <div class="arrow"><img src="/images/arrow.png" width="100px"></div>
 </div>
-
+<div class="second">
 <div class="header">
   <div class="link_div"><%= link_to "Главная", users_path, class:"menu_link" %></div>
   <% @users.each do |u| %>
-      <div class="link_div"><%= link_to u.name, main_page_path(u.name), class:"menu_link" %></div>
+      <div class="link_div">
+        <%= link_to u.name, main_page_path(u.name), class:"menu_link" %>
+      </div>
   <% end %>
   <div class="link_div"><%= link_to "Редактировать пользователей", users_path, class:"menu_link" %></div>
   <div class="link_div"><%= link_to "Редактировать изображения", images_path, class:"menu_link" %></div>
 </div>
 
-<%= yield %>
-
-<% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>"><%= value %></div>
+<% if @category.present? %>
+    <style type="text/css">
+      html {
+        background: url("<%= @category.images[0].file.url %>") no-repeat center center fixed black;
+      }
+    </style>
 <% end %>
+
+<%= yield %>
+</div>
+<div class="up"><a class="up_link">Наверх</a></div>
 </body>
 </html>

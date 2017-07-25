@@ -1,12 +1,22 @@
+<div class="main_block">
+  <div class="new_and_edit">
+
 <h2><%= @action == :update ? "Редактирование поста" : "Создание поста" %></h2>
+    <div class="table_div">
+      <table>
 <% if @post.errors.any? %>
+            <tr><td>
+              <div class="errors">
     <ul>
       <% @post.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
       <% end %>
     </ul>
+              </div>
+            </td></tr>
 <% end %>
 
+        <tr><td>
 <%= form_for @post, url: {action: @action}, html: { multipart: true }, method: @action == :update ? :PATCH : :POST  do |f| %>
     <table>
       <tr>
@@ -20,3 +30,8 @@
       </tr>
     </table>
 <% end %>
+        </td></tr>
+    </table>
+  </div>
+  </div>
+</div>

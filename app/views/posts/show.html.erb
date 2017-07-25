@@ -1,2 +1,23 @@
-<h1>Post#show</h1>
-<p>Find me in app/views/post/show.html.erb</p>
+
+<div class="main_block">
+  <div class="contents">
+    <div class="posts">
+
+          <div class="datetime">
+            <%= @post.created_at.to_time.strftime("%Y-%m-%d %H:%M") %>
+          </div>
+          <div class="post_name">
+            <%= link_to @post.name, post_path(@username, @post.id), class:"post_name_link" %>
+          </div>
+          <div class="edit_links">
+            <%= link_to "Редактировать", edit_post_path(@username, @post.id), class:"edit_link" %>
+            <%= link_to "Удалить", post_path(@username, @post.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить этот пост?" }, class:"edit_link" %>
+          </div>
+          <div class="content">
+            <%= sanitize(@post.content) %>
+          </div>
+          <br>
+
+    </div>
+  </div>
+</div>
