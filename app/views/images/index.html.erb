@@ -1,14 +1,16 @@
-<% @images.each do |image| %>
-  <p>
-    <% if image.file.present? %>
-      <%= link_to(image_tag(image.file.url), image_path(image)) %>
-    <% else %>
-      Нет файла
-    <% end %>
-    <%= link_to "Удалить", image_path(image.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить это изображение?" } %>
-  </p>
-<% end %>
+<div class="all">
+  <p><%= link_to "Загрузить новое изображение", new_image_path %></p>
 
-<%= will_paginate @images %>
+  <% @images.each do |image| %>
+    <p>
+      <% if image.file.present? %>
+          <div class="img_div"><%= link_to(image_tag(image.file.url, style:"max-width:600px;"), image_path(image)) %></div>
+      <% else %>
+        Нет файла
+      <% end %>
+      <%= link_to "Удалить", image_path(image.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить это изображение?" } %>
+    </p>
+  <% end %>
 
-<p><%= link_to "Загрузить новое изображение", new_image_path %></p>
+  <%= will_paginate @images %>
+</div>

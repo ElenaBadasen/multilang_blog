@@ -1,15 +1,18 @@
 class ImagesController < ApplicationController
   def index
-    @images = Image.paginate(:page => params[:page], :per_page => 30)
+    @users = User.all
+    @images = Image.paginate(:page => params[:page], :per_page => 20)
   end
 
   def new
+    @users = User.all
     @image = Image.new
     @action = :create
     render :new
   end
 
   def create
+    @users = User.all
     @image = Image.create(image_params)
     @image.file = image_params[:file]
     if @image.save
@@ -21,13 +24,16 @@ class ImagesController < ApplicationController
   end
 
   def show
+    @users = User.all
     @image = Image.find(params[:id])
   end
 
   def edit
+    @users = User.all
   end
 
   def update
+    @users = User.all
   end
 
   def destroy

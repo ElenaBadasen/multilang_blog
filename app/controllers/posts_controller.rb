@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   def index
     @username = params[:username]
-    @posts = Post.all
     @category = Category.find_by(path: params[:category_id])
+    @posts = @category.posts
     @users = User.all
   end
 

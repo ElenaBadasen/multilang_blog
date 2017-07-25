@@ -1,3 +1,62 @@
-// Place all the styles related to the image controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.all {
+  width: 770px;
+  background: white;
+  display: inline-block;
+  text-align: left;
+}
+
+html {
+  background: black;
+  text-align: center;
+}
+
+body {
+  margin: 0px;
+  height: 100vh;
+}
+
+.header {
+  background: white;
+  width: 770px;
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
+}
+
+.menu_link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
+  padding: 3px;
+}
+
+.link_div {
+  display: inline;
+}
+
+.up_images {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+}
+
+.up_link {
+  text-decoration: none;
+  color: rgba(150, 150, 150, 1);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.all_and_header {
+  min-height: 100vh;
+  background: white;
+  width: 800px;
+  display: inline-block;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.inner {
+}

@@ -72,12 +72,19 @@ $(document).ready(function() {
     $('.up').hide();
 
     $(window).scroll(function() {
-        if($(this).scrollTop() >= document.documentElement.clientWidth) {
-            console.log("HERE");
+        if($(this).scrollTop() > document.documentElement.clientHeight) {
             $('.up').fadeIn();
         } else {
-            console.log("HERE1");
             $('.up').fadeOut();
+        }
+    });
+
+    $('.up_images').hide();
+    $(window).scroll(function() {
+        if($(this).scrollTop() > 0) {
+            $('.up_images').fadeIn();
+        } else {
+            $('.up_images').fadeOut();
         }
     });
 
