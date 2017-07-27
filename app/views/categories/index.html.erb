@@ -13,7 +13,9 @@
   <% @categories.each do |c| %>
       <% if c.destination == "basic" %>
         <div class="category">
-          <%= link_to(image_tag(c.images[0].file.url, class:"category_image"), category_posts_path(@username, c.path)) %>
+          <%= link_to(category_posts_path(@username, c.path)) do %>
+              <div class="center-cropped" style="background-image: url('<%= c.images[0].file.url %>');"></div>
+          <% end %>
           <br>
           <%= link_to c.name, category_posts_path(@username, c.path), class:"category_name_link" %>
           <br>

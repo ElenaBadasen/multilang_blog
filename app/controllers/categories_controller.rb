@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
 
   def new
     @users = User.all
+    @username = params[:username]
     @category = Category.new
     @action = :create
     @header_category = @categories.where(destination: "header")[0]
@@ -16,6 +17,7 @@ class CategoriesController < ApplicationController
 
   def create
     @users = User.all
+    @username = params[:username]
     user = User.find_by(name: params[:username])
     @header_category = @categories.where(destination: "header")[0]
     @category = user.categories.create(category_params)
@@ -34,6 +36,7 @@ class CategoriesController < ApplicationController
 
   def edit
     @users = User.all
+    @username = params[:username]
     @user = User.find_by(name: params[:username])
     @category = Category.find(params[:id])
     @action = :update
@@ -43,6 +46,7 @@ class CategoriesController < ApplicationController
 
   def update
     @users = User.all
+    @username = params[:username]
     @category = Category.find(params[:id])
     @header_category = Category.where(destination: "header")[0]
     if category_params[:file].present? or category_params[:file_cache].present?
