@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'login', to: 'admin#login', as: 'login'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
 
   root to: 'users#index', as: 'users'
 
@@ -15,7 +17,5 @@ Rails.application.routes.draw do
 
     root to: 'categories#index', as: 'main_page'
   end
-
-
 
 end
