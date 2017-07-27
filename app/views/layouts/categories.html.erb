@@ -45,6 +45,10 @@
       <% end %>
   <% end %>
   <div class="link_div"><%= link_to "Редактировать изображения", images_path, class:"menu_link" %></div>
+  <% if current_user.present? %>
+    <div class="link_div">Вы залогинены как <b><%= current_user.name %></b></div>
+    <div class="link_div"><%= link_to "Выход", logout_path, method: :delete, class:"menu_link" %></div>
+  <% end %>
 </div>
 
 <% if @header_category.present? %>

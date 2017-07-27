@@ -19,6 +19,10 @@
         </div>
     <% end %>
     <div class="link_div"><%= link_to "Редактировать изображения", images_path, class:"menu_link", id:"images_link" %></div>
+    <% if current_user.present? %>
+        <div class="link_div">Вы залогинены как <b><%= current_user.name %></b></div>
+        <div class="link_div"><%= link_to "Выход", logout_path, method: :delete, class:"menu_link" %></div>
+    <% end %>
   </div>
   <%= yield %>
   <div class="up_images"><a class="up_link">Наверх</a></div>
