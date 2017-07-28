@@ -23,7 +23,12 @@
         <% c = @header_category.present? ? @header_category : @category %>
         <%= c.name.split("\\n").map{|x| "\"" + x + "\"" }.join(", ") %>
       <% end %>
-       ]'>
+       ]'
+         <% c = @header_category.present? ? @header_category : @category %>
+
+         <% p "HERE", c %>
+         style="color:<%= c.color %>;"
+      >
         <span class="wrap"></span>
       </a>
     </div>
@@ -56,7 +61,7 @@
     <style type="text/css">
       html {
         background: url("<%= @category.images[0].file.url %>") no-repeat center center fixed black;
-        background-size: cover;
+        background-size: cover !important;
       }
     </style>
 <% end %>

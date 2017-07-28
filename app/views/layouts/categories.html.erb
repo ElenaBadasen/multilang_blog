@@ -28,7 +28,12 @@
           <%= c.name.split("\\n").map{|x| "\"" + x + "\"" }.join(", ") %>
         <% end %>
       <% end %>
-       ]'>
+       ]'
+         <% c = @header_category.present? ? @header_category : @category %>
+
+          <% p "HERE", c %>
+         style="color:<%= c.color %>;"
+      >
         <span class="wrap"></span>
       </a>
     </div>
@@ -59,7 +64,7 @@
   <style type="text/css">
     html {
       background: url("<%= @header_category.images[0].file.url %>") black;
-      background-size: cover;
+      background-size: cover !important;
     }
   </style>
 <% end %>

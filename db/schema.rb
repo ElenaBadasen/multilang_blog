@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170727231903) do
+ActiveRecord::Schema.define(version: 20170728161416) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20170727231903) do
     t.integer  "user_id"
     t.string   "path",        default: "path", null: false
     t.integer  "destination", default: 0,      null: false
+    t.string   "color",       default: ""
     t.index ["name"], name: "index_categories_on_name", unique: true
     t.index ["path"], name: "index_categories_on_path", unique: true
     t.index ["user_id"], name: "index_categories_on_user_id"
