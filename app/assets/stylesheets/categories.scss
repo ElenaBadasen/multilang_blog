@@ -8,10 +8,11 @@ html {
   z-index: 1;
   min-width: 900px;
   background-color: black;
+  background-size: cover;
 }
 
 body {
-  background-size: cover;
+
   margin:0px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -230,7 +231,7 @@ h1 {
 .category_link {
   text-decoration: none;
   color: rgba(0, 0, 0, 1);
-  font-size: 20px;
+  font-size: 40px;
 }
 
 .center-cropped {

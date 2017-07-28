@@ -58,7 +58,8 @@
 <% if @header_category.present? %>
   <style type="text/css">
     html {
-      background: url("<%= @header_category.images[0].file.url %>") no-repeat center center fixed black;
+      background: url("<%= @header_category.images[0].file.url %>") black;
+      background-size: cover;
     }
   </style>
 <% end %>
