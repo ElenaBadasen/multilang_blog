@@ -13,6 +13,6 @@ class Category < ApplicationRecord
   attr_accessor :file, :file_cache
 
   def self.any_destination_to_text(destination)
-    destination == "basic" ? "основное" : "шапка"
+    destination == "basic" ? I18n.t('main_destination') : I18n.t('header_destination')
   end
 end

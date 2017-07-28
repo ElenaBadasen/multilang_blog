@@ -15,7 +15,8 @@ class CategoriesController < ApplicationController
     authorize! :update, @user
     @category = Category.new
     @action = :create
-    @header_category = Category.find_by(destination: "header")[0]
+    @header_category = @user.categories.where(destination: "header")[0]
+    p "HERE", @header_category
     render :new_and_edit
   end
 
@@ -25,7 +26,7 @@ class CategoriesController < ApplicationController
     @username = params[:username]
     user = User.find_by(name: params[:username])
     authorize! :update, user
-    @header_category = Category.find_by(destination: "header")[0]
+    @header_category = @user.categories.where(destination: "header")[0]
     @category = user.categories.create(category_params)
     @category.images << Image.new(file: category_params[:file])
     if @category.save and @category.images[0].save
@@ -47,7 +48,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     authorize! :update, @category
     @action = :update
-    @header_category = Category.find_by(destination: "header")[0]
+    @header_category = @user.categories.where(destination: "header")[0]
     render :new_and_edit
   end
 
@@ -56,7 +57,7 @@ class CategoriesController < ApplicationController
     @username = params[:username]
     @category = Category.find(params[:id])
     authorize! :update, @category
-    @header_category = Category.find_by(destination: "header")[0]
+    @header_category = @user.categories.where(destination: "header")[0]
     if category_params[:file].present? or category_params[:file_cache].present?
       @category.images = []
       @category.images << Image.new(file: category_params[:file])

@@ -1,7 +1,7 @@
 <div class="main_block">
 <div class="new_and_edit">
 
-<h2><%= @action == :update ? "Редактирование категории" : "Создание категории" %></h2>
+<h2><%= @action == :update ? t('editing_category') : t('creating_category') %></h2>
 <div class="table_div">
 <table>
 <% if @category.errors.any? %>
@@ -20,22 +20,22 @@
 <%= form_for @category, url: {action: @action}, html: { multipart: true }, method: @action == :update ? :PATCH : :POST  do |f| %>
     <table>
       <tr>
-        <td>Название категории:</td><td><%= f.text_field :name %></td>
+        <td><%= t('category_name') %></td><td><%= f.text_field :name %></td>
       </tr>
       <tr>
-        <td>Цвет заголовка:</td><td><%= f.text_field :color %></td>
+        <td><%= t('header_color') %></td><td><%= f.text_field :color %></td>
       </tr>
       <tr>
-        <td>Путь к категории:</td><td><%= f.text_field :path %></td>
+        <td><%= t('category_path') %></td><td><%= f.text_field :path %></td>
       </tr>
       <tr>
-        <td>Назначение:</td><td><%= f.select :destination, options_for_select(Category.destinations.keys.map{|x| [Category.any_destination_to_text(x), x]}, @category.destination) %></td>
+        <td><%= t('destination') %></td><td><%= f.select :destination, options_for_select(Category.destinations.keys.map{|x| [Category.any_destination_to_text(x), x]}, @category.destination) %></td>
       </tr>
       <tr>
-        <td>Описание:</td><td><%= f.text_area :description %></td>
+        <td><%= t('description') %></td><td><%= f.text_area :description %></td>
       </tr>
       <tr>
-        <td>Картинка:</td>
+        <td><%= t('picture') %></td>
         <td>
           <% if @category.images.present? and @category.images[0].file.present? %>
             <%= image_tag @category.images[0].file.url, width:"100px" %>
@@ -45,7 +45,7 @@
         </td>
       </tr>
       <tr>
-        <td><%= f.submit @action == :update ? "Изменить" : "Создать" %></td><td></td>
+        <td><%= f.submit @action == :update ? t('update') : t('create') %></td><td></td>
       </tr>
     </table>
 <% end %>

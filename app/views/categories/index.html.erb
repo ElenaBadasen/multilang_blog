@@ -2,8 +2,8 @@
   <% if @header_category.present? %>
     <% if can? :manage, @header_category %>
       <div>
-      <%= link_to "Редактировать", edit_category_path(@username, @header_category.id), class:"edit_category_link" %>
-      <%= link_to "Удалить", category_path(@username, @header_category.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить эту категорию?" }, class:"edit_category_link" %>
+      <%= link_to t('edit'), edit_category_path(@username, @header_category.id), class:"edit_category_link" %>
+      <%= link_to t('delete'), category_path(@username, @header_category.id), method: :delete, data: { confirm: t('confirm_category_delete') }, class:"edit_category_link" %>
       </div>
     <% end %>
     <div class="welcome_text">
@@ -22,13 +22,13 @@
           <%= link_to c.name, category_posts_path(@username, c.path), class:"category_name_link" %>
           <% if can? :manage, c %>
             <br>
-            <%= link_to "Редактировать", edit_category_path(@username, c.id), class:"edit_category_link" %>
-            <%= link_to "Удалить", category_path(@username, c.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить эту категорию?" }, class:"edit_category_link" %>
+            <%= link_to t('edit'), edit_category_path(@username, c.id), class:"edit_category_link" %>
+            <%= link_to t('delete'), category_path(@username, c.id), method: :delete, data: { confirm: t('confirm_category_delete') }, class:"edit_category_link" %>
           <% end %>
         </div>
       <% end %>
   <% end %>
   <% if can? :create, Category and can? :update, @user %>
-    <p><%= link_to "Создать новую категорию", new_category_path(@username), class:"new_category_link" %></p>
+    <p><%= link_to t('new_category'), new_category_path(@username), class:"new_category_link" %></p>
   <% end %>
 </div>

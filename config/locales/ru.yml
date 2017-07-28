@@ -1,3 +1,32 @@
 ru:
   hello: "Привет, мир"
+
   home: "Главная"
+  edit_images: "Редактировать изображения"
+  you_are_logged_in_as: "Вы залогинены как "
+  logout: "Выход"
+  up: "Наверх"
+
+  edit: "Редактировать"
+  delete: "Удалить"
+  new_category: "Создать новую категорию"
+  confirm_category_delete: "Вы уверены, что хотите удалить эту категорию?"
+
+  creating_category: "Создание категории"
+  editing_category: "Редактирование категории"
+  category_name: "Название категории:"
+  header_color: "Цвет заголовка:"
+  category_path: "Путь к категории:"
+  destination: "Назначение:"
+  description: "Описание:"
+  picture: "Картинка:"
+  update: "Изменить"
+  create: "Создать"
+  main_destination: "основное"
+  header_destination: "шапка"
+
+  upload_new_image: "Загрузить новое изображение"
+  confirm_image_delete: "Вы уверены, что хотите удалить это изображение?"
+
+  uploading_new_image: "Загрузка изображения"
+  upload: "Загрузить"

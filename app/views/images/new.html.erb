@@ -1,5 +1,5 @@
 <div class="all">
-<h2><%= "Загрузка изображения" %></h2>
+<h2><%= t('uploading_new_image') %></h2>
 <% if @image.errors.any? %>
     <ul>
       <% @image.errors.full_messages.each do |msg| %>
@@ -21,7 +21,7 @@
         </td>
       </tr>
       <tr>
-        <td><%= f.submit "Загрузить" %></td><td></td>
+        <td><%= f.submit t('upload') %></td><td></td>
       </tr>
     </table>
 <% end %>

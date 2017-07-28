@@ -72,19 +72,16 @@ $(document).ready(function() {
     $('.up').hide();
 
     $(window).scroll(function() {
-        if($(this).scrollTop() > document.documentElement.clientHeight) {
+        var margin = 0;
+        if (window.location.pathname == "/images" || window.location.pathname == "/en/images") {
+            margin = 0;
+        } else {
+            margin = document.documentElement.clientHeight;
+        }
+        if($(this).scrollTop() > margin) {
             $('.up').fadeIn();
         } else {
             $('.up').fadeOut();
-        }
-    });
-
-    $('.up_images').hide();
-    $(window).scroll(function() {
-        if($(this).scrollTop() > 0) {
-            $('.up_images').fadeIn();
-        } else {
-            $('.up_images').fadeOut();
         }
     });
 

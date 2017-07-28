@@ -1,5 +1,5 @@
 <div class="all">
-  <p><%= link_to "Загрузить новое изображение", new_image_path %></p>
+  <p><%= link_to t('upload_new_image'), new_image_path %></p>
 
   <% @images.each do |image| %>
     <p>
@@ -8,7 +8,7 @@
       <% else %>
         Нет файла
       <% end %>
-      <%= link_to "Удалить", image_path(image.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить это изображение?" } %>
+      <%= link_to t('delete'), image_path(image.id), method: :delete, data: { confirm: t('confirm_image_delete') } %>
     </p>
   <% end %>
 
