@@ -2,24 +2,30 @@ class CategoriesController < ApplicationController
   def index
     @users = User.all
     @username = params[:username]
-    @categories = User.find_by(name: @username).categories
+    @user = User.find_by(name: @username)
+    @categories = @user.categories
     @header_category = @categories.where(destination: "header")[0]
   end
 
   def new
+    authorize! :create, Category
     @users = User.all
     @username = params[:username]
+    @user = User.find_by(name: @username)
+    authorize! :update, @user
     @category = Category.new
     @action = :create
-    @header_category = @categories.where(destination: "header")[0]
+    @header_category = Category.find_by(destination: "header")[0]
     render :new_and_edit
   end
 
   def create
+    authorize! :create, Category
     @users = User.all
     @username = params[:username]
     user = User.find_by(name: params[:username])
-    @header_category = @categories.where(destination: "header")[0]
+    authorize! :update, user
+    @header_category = Category.find_by(destination: "header")[0]
     @category = user.categories.create(category_params)
     @category.images << Image.new(file: category_params[:file])
     if @category.save and @category.images[0].save
@@ -39,8 +45,9 @@ class CategoriesController < ApplicationController
     @username = params[:username]
     @user = User.find_by(name: params[:username])
     @category = Category.find(params[:id])
+    authorize! :update, @category
     @action = :update
-    @header_category = Category.where(destination: "header")[0]
+    @header_category = Category.find_by(destination: "header")[0]
     render :new_and_edit
   end
 
@@ -48,7 +55,8 @@ class CategoriesController < ApplicationController
     @users = User.all
     @username = params[:username]
     @category = Category.find(params[:id])
-    @header_category = Category.where(destination: "header")[0]
+    authorize! :update, @category
+    @header_category = Category.find_by(destination: "header")[0]
     if category_params[:file].present? or category_params[:file_cache].present?
       @category.images = []
       @category.images << Image.new(file: category_params[:file])
@@ -64,6 +72,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category = Category.find(params[:id])
+    authorize! :destroy, @category
     delete_category = true
     if @category.posts.any?
       delete_category = false

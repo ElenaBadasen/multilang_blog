@@ -2,20 +2,22 @@
 <div class="main_block">
   <div class="contents">
     <% if @category.present? %>
-      <div>
+      <% if can? :manage, @category %>
+        <div>
         <%= link_to "Редактировать", edit_category_path(@username, @category.id), class:"edit_category_link" %>
         <%= link_to "Удалить", category_path(@username, @category.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить эту категорию?" }, class:"edit_category_link" %>
-      </div>
+        </div>
+      <% end %>
       <div class="welcome_text">
         <%= @category.description %>
       </div>
     <% end %>
     <div class="posts">
-
-      <div><%= link_to "Написать новый пост", new_category_post_path(@username, @category.path), class:"new_post_link" %></div>
-      <br>
-      <br>
-
+      <% if can? :manage, @category and can? :create, Post %>
+        <div><%= link_to "Написать новый пост", new_category_post_path(@username, @category.path), class:"new_post_link" %></div>
+        <br>
+        <br>
+      <% end %>
       <% @posts.each do |p| %>
           <div class="datetime">
             <%= p.created_at.to_time.strftime("%Y-%m-%d %H:%M") %>
@@ -23,10 +25,12 @@
           <div class="post_name">
             <%= link_to p.name, post_path(@username, p.id), class:"post_name_link" %>
           </div>
-          <div class="edit_links">
-            <%= link_to "Редактировать", edit_post_path(@username, p.id), class:"edit_link" %>
-            <%= link_to "Удалить", post_path(@username, p.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить этот пост?" }, class:"edit_link" %>
-          </div>
+          <% if can? :manage, p %>
+            <div class="edit_links">
+              <%= link_to "Редактировать", edit_post_path(@username, p.id), class:"edit_link" %>
+              <%= link_to "Удалить", post_path(@username, p.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить этот пост?" }, class:"edit_link" %>
+            </div>
+          <% end %>
           <div class="content">
             <%= sanitize(p.content) %>
           </div>

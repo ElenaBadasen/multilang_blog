@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    authorize! :create, User
     @user = User.new
     @action = :create
     @password_correct = true
@@ -11,7 +12,9 @@ class UsersController < ApplicationController
   end
 
   def create
+    authorize! :create, User
     @user = User.create(user_params)
+    @user.member = true
     @password_correct = true
 
 
@@ -31,6 +34,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    authorize! :update, @user
     @action = :update
     @password_correct = true
     render :new_and_edit
@@ -38,6 +42,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    authorize! :update, @user
     if user_params[:file].present?
       @user.images = []
       @user.images << Image.new(file: user_params[:file])
@@ -46,6 +51,7 @@ class UsersController < ApplicationController
     @user.name = user_params[:name]
     @user.email = user_params[:email]
     @user.custom_css = user_params[:custom_css]
+    @user.member = true
     @password_correct = true
     if params[:password].present?
       if @user.authenticate(params[:current_password]) == false
@@ -64,6 +70,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    authorize! :destroy, @user
     delete_user = true
     if @user.categories.any?
       delete_user = false

@@ -4,7 +4,9 @@
   <title>
     <% if @header_category.present? or @category.present? %>
         <% c = @header_category.present? ? @header_category : @category %>
-        <%= c.name.split("\\n").join(" ") %>
+        <% if c.name.present? %>
+          <%= c.name.split("\\n").join(" ") %>
+        <% end %>
     <% end %>
 
   </title>
@@ -22,7 +24,9 @@
       <a class="typewrite" data-period="1000" data-type='[
       <% if @header_category.present? or @category.present? %>
         <% c = @header_category.present? ? @header_category : @category %>
-        <%= c.name.split("\\n").map{|x| "\"" + x + "\"" }.join(", ") %>
+        <% if c.name.present? %>
+          <%= c.name.split("\\n").map{|x| "\"" + x + "\"" }.join(", ") %>
+        <% end %>
       <% end %>
        ]'>
         <span class="wrap"></span>
@@ -44,8 +48,8 @@
           </style>
       <% end %>
   <% end %>
-  <div class="link_div"><%= link_to "Редактировать изображения", images_path, class:"menu_link" %></div>
   <% if current_user.present? %>
+    <div class="link_div"><%= link_to "Редактировать изображения", images_path, class:"menu_link" %></div>
     <div class="link_div">Вы залогинены как <b><%= current_user.name %></b></div>
     <div class="link_div"><%= link_to "Выход", logout_path, method: :delete, class:"menu_link" %></div>
   <% end %>

@@ -7,8 +7,10 @@ class PostsController < ApplicationController
   end
 
   def new
+    authorize! :create, Post
     @username = params[:username]
     @category = Category.find_by(path: params[:category_id])
+    authorize! :update, @category
     @post = Post.new
     @action = :create
     @users = User.all
@@ -16,8 +18,10 @@ class PostsController < ApplicationController
   end
 
   def create
+    authorize! :create, Post
     @username = params[:username]
     @category = Category.find_by(path: params[:category_id])
+    authorize! :update, @category
     @post = @category.posts.create(post_params)
     if @post.save
       redirect_to category_posts_path(params[:username], @category.path), notice: 'Пост успешно создан'
@@ -38,6 +42,7 @@ class PostsController < ApplicationController
     @username = params[:username]
     @users = User.all
     @post = Post.find(params[:id])
+    authorize! :update, @post
     @category = @post.category
     @action = :update
     render :new_and_edit
@@ -47,6 +52,7 @@ class PostsController < ApplicationController
     @username = params[:username]
     @category = Category.find_by(path: params[:category_id])
     @post = Post.find(params[:id])
+    authorize! :update, @post
     if @post.update(post_params)
       redirect_to post_path(params[:username], @post), notice: 'Пост успешно изменён.'
     else
@@ -58,6 +64,7 @@ class PostsController < ApplicationController
   def destroy
     @username = params[:username]
     @post = Post.find(params[:id])
+    authorize! :destroy, @post
     @post.delete
     redirect_to category_posts_path(@username, @post.category.path), notice: 'Пост успешно удалён.'
   end
