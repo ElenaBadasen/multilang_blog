@@ -1,0 +1,44 @@
+<div class="second">
+  <div class="header">
+    <div class="link_div"><%= link_to(t('home'), users_path, class:"menu_link") %></div>
+    <% @users.each do |u| %>
+        <div class="link_div">
+          <%= link_to u.name, main_page_path(u.name), class:"menu_link", id:u.name %>
+        </div>
+        <% if u.name == @username %>
+            <style type="text/css">
+              #<%= u.name %> {
+                font-weight: bold;
+              }
+            </style>
+        <% end %>
+    <% end %>
+    <% if params[:locale] == "ru" %>
+        <%= link_to 'English', url_for( :locale => 'en' ), class:"menu_link" %>
+    <% else %>
+        <%= link_to 'Русский', url_for( :locale => 'ru' ), class:"menu_link" %>
+    <% end %>
+    <% if current_user.present? %>
+        <div class="link_div"><%= link_to "Редактировать изображения", images_path, class:"menu_link" %></div>
+        <div class="link_div">Вы залогинены как <b><%= current_user.name %></b></div>
+        <div class="link_div"><%= link_to "Выход", logout_path, method: :delete, class:"menu_link" %></div>
+    <% end %>
+  </div>
+
+  <% if @category.present? %>
+      <style type="text/css">
+        html {
+          background: url("<%= @category.images[0].file.url %>") no-repeat center center fixed black;
+          background-size: cover !important;
+        }
+      </style>
+  <% end %>
+
+  <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
+
+  <%= yield %>
+</div>
+
+<div class="up"><a class="up_link">Наверх</a></div>

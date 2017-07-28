@@ -9,26 +9,6 @@
 </head>
 
 <body>
-<div class="all_and_header">
-  <div class="inner">
-  <div class="header">
-    <div class="link_div"><%= link_to "Главная", users_path, class:"menu_link" %></div>
-    <% @users.each do |u| %>
-        <div class="link_div">
-          <%= link_to u.name, main_page_path(u.name), class:"menu_link", id:u.name %>
-        </div>
-    <% end %>
-    <% if current_user.present? %>
-        <div class="link_div"><%= link_to "Редактировать изображения", images_path, class:"menu_link", id:"images_link" %></div>
-        <div class="link_div">Вы залогинены как <b><%= current_user.name %></b></div>
-        <div class="link_div"><%= link_to "Выход", logout_path, method: :delete, class:"menu_link" %></div>
-    <% end %>
-  </div>
-    <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-    <% end %>
-  <%= yield %>
-  <div class="up_images"><a class="up_link">Наверх</a></div>
-  </div>
+<%= render partial: "layouts/header" %>
 </div>
 </body>

@@ -1,21 +1,21 @@
 Rails.application.routes.draw do
+  scope "(:locale)", locale: /en|ru/ do
+    get    '/login',   to: 'sessions#new'
+    post   '/login',   to: 'sessions#create'
+    delete '/logout',  to: 'sessions#destroy'
 
-  get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
+    root to: 'users#index', as: 'users'
 
-  root to: 'users#index', as: 'users'
+    resources :users
 
-  resources :users
+    resources :images
 
-  resources :images
+    scope ':username' do
+      resources :categories do
+        resources :posts, shallow: true
+      end
 
-  scope ':username' do
-    resources :categories do
-      resources :posts, shallow: true
+      root to: 'categories#index', as: 'main_page'
     end
-
-    root to: 'categories#index', as: 'main_page'
   end
-
 end

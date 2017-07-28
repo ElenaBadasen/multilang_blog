@@ -1,0 +1,28 @@
+<div class="welcome_image_area">
+  <h1>
+    <div class="typewrite_div">
+      <a class="typewrite" data-period="1000" data-type='[
+      <% if @header_category.present? or @category.present? %>
+        <% c = @header_category.present? ? @header_category : @category %>
+        <%= c.name.split("\\n").map{|x| "\"" + x + "\"" }.join(", ") %>
+      <% end %>
+       ]'
+         <% c = @header_category.present? ? @header_category : @category %>
+
+         <% p "HERE", c %>
+         style="color:<%= c.color %>;"
+      >
+        <span class="wrap"></span>
+      </a>
+    </div>
+  </h1>
+  <div class="arrow"><img src="/images/arrow.png" width="100px"></div>
+</div>
+
+<%= render partial: "layouts/header" %>
+
+<% if @users.where(name: @username)[0].custom_css.present? %>
+    <style type="text/css">
+      <%= sanitize(@users.where(name: @username)[0].custom_css) %>
+    </style>
+<% end %>

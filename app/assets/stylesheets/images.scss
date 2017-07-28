@@ -3,6 +3,7 @@
   background: white;
   display: inline-block;
   text-align: left;
+  padding: 20px;
 }
 
 html {
@@ -76,4 +77,10 @@ a {
   display: inline-block;
   text-align: left;
   margin: 20px;
+}
+
+.header {
+  background-color: rgba(255, 255, 255, 1);
+  padding: 20px;
+  text-align: center;
 }

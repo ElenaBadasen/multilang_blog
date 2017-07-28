@@ -1,0 +1,13 @@
+<title>
+  <% if @header_category.present? or @category.present? %>
+      <% c = @header_category.present? ? @header_category : @category %>
+      <% if c.name.present? %>
+          <%= c.name.split("\\n").join(" ") %>
+      <% end %>
+  <% end %>
+
+</title>
+<%= csrf_meta_tags %>
+
+<%= stylesheet_link_tag    'categories', media: 'all' %>
+<%= javascript_include_tag 'application' %>

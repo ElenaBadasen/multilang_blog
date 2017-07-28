@@ -10,10 +10,6 @@
 
 <body>
 <img class="bg" src="http://i.imgur.com/JNSG7Ul.jpg">
-<div class="admin_header">
-  <p><%= link_to "Редактировать пользователей", users_path %></p>
-  <p><%= link_to "Редактировать изображения", images_path %></p>
-</div>
 
 <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>"><%= value %></div>

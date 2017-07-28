@@ -1,83 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>
-    <% if @header_category.present? or @category.present? %>
-        <% c = @header_category.present? ? @header_category : @category %>
-        <%= c.name.split("\\n").join(" ") %>
-    <% end %>
-  </title>
-  <%= csrf_meta_tags %>
-
-  <%= stylesheet_link_tag    'categories', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
+  <%= render partial: "layouts/very_header" %>
 </head>
 
 <body>
 
-<div class="welcome_image_area">
-  <h1>
-    <div class="typewrite_div">
-      <a class="typewrite" data-period="1000" data-type='[
-      <% if @header_category.present? or @category.present? %>
-        <% c = @header_category.present? ? @header_category : @category %>
-        <%= c.name.split("\\n").map{|x| "\"" + x + "\"" }.join(", ") %>
-      <% end %>
-       ]'
-         <% c = @header_category.present? ? @header_category : @category %>
+<%= render partial: "layouts/header_with_image" %>
 
-         <% p "HERE", c %>
-         style="color:<%= c.color %>;"
-      >
-        <span class="wrap"></span>
-      </a>
-    </div>
-  </h1>
-  <div class="arrow"><img src="/images/arrow.png" width="100px"></div>
-</div>
-<div class="second">
-<div class="header">
-  <div class="link_div"><%= link_to "Главная", users_path, class:"menu_link" %></div>
-  <% @users.each do |u| %>
-      <div class="link_div">
-        <%= link_to u.name, main_page_path(u.name), class:"menu_link", id:u.name %>
-      </div>
-      <% if u.name == @username %>
-          <style type="text/css">
-            #<%= u.name %> {
-              font-weight: bold;
-            }
-          </style>
-      <% end %>
-  <% end %>
-  <% if current_user.present? %>
-      <div class="link_div"><%= link_to "Редактировать изображения", images_path, class:"menu_link" %></div>
-      <div class="link_div">Вы залогинены как <b><%= current_user.name %></b></div>
-      <div class="link_div"><%= link_to "Выход", logout_path, method: :delete, class:"menu_link" %></div>
-  <% end %>
-</div>
-
-<% if @category.present? %>
-    <style type="text/css">
-      html {
-        background: url("<%= @category.images[0].file.url %>") no-repeat center center fixed black;
-        background-size: cover !important;
-      }
-    </style>
-<% end %>
-
-  <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>"><%= value %></div>
-  <% end %>
-
-<%= yield %>
-</div>
-<div class="up"><a class="up_link">Наверх</a></div>
-
-<% if @users.where(name: @username)[0].custom_css.present? %>
-    <style type="text/css">
-      <%= sanitize(@users.where(name: @username)[0].custom_css) %>
-    </style>
-<% end %>
 </body>
 </html>

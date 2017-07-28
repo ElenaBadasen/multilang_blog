@@ -1,3 +1,4 @@
+<div class="all">
 <br><br>
 <% if @image.file.present? %>
     <%= image_tag @image.file.url, class:"big_image" %>
@@ -5,3 +6,4 @@
 
 <p><%= text_field_tag "url", request.host + @image.file.url %></p>
 <p><%= link_to "Все изображения", images_path %></p>
+</div>
