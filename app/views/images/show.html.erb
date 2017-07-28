@@ -5,5 +5,5 @@
 <% end %>
 
 <p><%= text_field_tag "url", request.host + @image.file.url %></p>
-<p><%= link_to "Все изображения", images_path %></p>
+<p><%= link_to t('all_images'), images_path %></p>
 </div>

@@ -30,3 +30,18 @@ ru:
 
   uploading_new_image: "Загрузка изображения"
   upload: "Загрузить"
+
+  all_images: "Все изображения"
+
+  authentication: "Аутентификация"
+  email: "E-mail:"
+  password: "Пароль:"
+  enter: "Войти"
+
+  confirm_post_delete: "Вы уверены, что хотите удалить этот пост?"
+  new_post: "Написать новый пост"
+
+  updating_post: "Редактирование поста"
+  creating_post: "Создание поста"
+  post_name: "Название поста:"
+  post_content: "Текст:"

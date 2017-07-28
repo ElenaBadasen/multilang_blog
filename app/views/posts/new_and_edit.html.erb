@@ -3,32 +3,32 @@
 
     <div><%= link_to @category.name, category_posts_path(@username, @category.path), class:"category_link" %></div>
 
-<h2><%= @action == :update ? "Редактирование поста" : "Создание поста" %></h2>
+<h2><%= @action == :update ? t('updating_post') : t('creating_post') %></h2>
     <div class="table_div">
       <table>
 <% if @post.errors.any? %>
-            <tr><td>
-              <div class="errors">
-    <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-      <% end %>
-    </ul>
-              </div>
-            </td></tr>
+  <tr><td>
+    <div class="errors">
+      <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  </td></tr>
 <% end %>
 
         <tr><td>
 <%= form_for @post, url: {action: @action}, html: { multipart: true }, method: @action == :update ? :PATCH : :POST  do |f| %>
     <table>
       <tr>
-        <td>Название поста:</td><td><%= f.text_field :name %></td>
+        <td><%= t('post_name') %></td><td><%= f.text_field :name %></td>
       </tr>
       <tr>
-        <td>Текст:</td><td><%= f.text_area :content %></td>
+        <td><%= t('post_content') %></td><td><%= f.text_area :content %></td>
       </tr>
       <tr>
-        <td><%= f.submit @action == :update ? "Изменить" : "Создать" %></td><td></td>
+        <td><%= f.submit @action == :update ? t('update') : t('create') %></td><td></td>
       </tr>
     </table>
 <% end %>

@@ -12,8 +12,8 @@
       </div>
       <% if can? :manage, @post %>
         <div class="edit_links">
-          <%= link_to "Редактировать", edit_post_path(@username, @post.id), class:"edit_link" %>
-          <%= link_to "Удалить", post_path(@username, @post.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить этот пост?" }, class:"edit_link" %>
+          <%= link_to t('edit'), edit_post_path(@username, @post.id), class:"edit_link" %>
+          <%= link_to t('delete'), post_path(@username, @post.id), method: :delete, data: { confirm: t('confirm_post_delete') }, class:"edit_link" %>
         </div>
       <% end %>
       <div class="content">
