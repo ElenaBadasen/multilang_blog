@@ -20,7 +20,7 @@
       <% end %>
       <% @posts.each do |p| %>
           <div class="datetime">
-            <%= p.created_at.to_time.strftime("%Y-%m-%d %H:%M") %>
+            <%= (p.created_at.to_time + 3.hours).strftime("%Y-%m-%d %H:%M") %>
           </div>
           <div class="post_name">
             <%= link_to p.name, post_path(@username, p.id), class:"post_name_link" %>

@@ -24,6 +24,9 @@
         <div class="link_div"><%= link_to "Выход", logout_path, method: :delete, class:"menu_link" %></div>
     <% end %>
   </div>
+    <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
   <%= yield %>
   <div class="up_images"><a class="up_link">Наверх</a></div>
   </div>
