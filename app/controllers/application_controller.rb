@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
   end
 
-  def default_url_options
-    { locale: I18n.locale }
+  def default_url_options(options={})
+    { :locale => I18n.locale }
   end
 end

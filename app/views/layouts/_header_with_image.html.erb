@@ -19,6 +19,16 @@
   <div class="arrow"><img src="/images/arrow.png" width="100px"></div>
 </div>
 
+<% if @header_category.present? or @category.present? %>
+    <% c = @header_category.present? ? @header_category : @category %>
+    <style type="text/css">
+      html {
+        background: url("<%= c.images[0].file.url %>") no-repeat center center fixed black;
+        background-size: cover !important;
+      }
+    </style>
+<% end %>
+
 <%= render partial: "layouts/header" %>
 
 <% if @users.where(name: @username)[0].custom_css.present? %>
