@@ -24,7 +24,7 @@ class PostsController < ApplicationController
     authorize! :update, @category
     @post = @category.posts.create(post_params)
     if @post.save
-      redirect_to category_posts_path(params[:username], @category.path), notice: 'Пост успешно создан'
+      redirect_to category_posts_path(params[:username], @category.path), notice: t('post_created')
     else
       @action = :create
       render :new_and_edit
@@ -54,7 +54,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     authorize! :update, @post
     if @post.update(post_params)
-      redirect_to post_path(params[:username], @post), notice: 'Пост успешно изменён.'
+      redirect_to post_path(params[:username], @post), notice: t('post_modified')
     else
       @action = :update
       render :new_and_edit
@@ -66,7 +66,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     authorize! :destroy, @post
     @post.delete
-    redirect_to category_posts_path(@username, @post.category.path), notice: 'Пост успешно удалён.'
+    redirect_to category_posts_path(@username, @post.category.path), notice: t('post_deleted')
   end
 
   private

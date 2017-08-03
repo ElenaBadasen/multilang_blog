@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       @user.images << Image.new(file: user_params[:file])
     end
     if @user.save and @user.images[0].save
-      redirect_to users_path, notice: 'Пользователь успешно создан'
+      redirect_to users_path, notice: t('user_created')
     else
       @action = :create
       render :new_and_edit
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
       end
     end
     if @user.save and @user.images[0].save and @password_correct
-      redirect_to users_path, notice: 'Пользователь успешно изменён.'
+      redirect_to users_path, notice: t('user_modified')
     else
       @action = :update
       render :new_and_edit
@@ -77,9 +77,9 @@ class UsersController < ApplicationController
     end
     if delete_user
       @user.delete
-      redirect_to users_path, notice: 'Пользователь успешно удалён.'
+      redirect_to users_path, notice: t('user_deleted')
     else
-      redirect_to users_path, notice: 'Нельзя удалить пользователя, у которого есть категории.'
+      redirect_to users_path, notice: t('cannot_delete_user')
     end
   end
 

@@ -66,3 +66,21 @@ en:
   creating_post: "Create post"
   post_name: "Post name:"
   post_content: "Content:"
+
+  category_successfully_created: "Category successfully created"
+  category_successfully_modified: "Category successfully modified"
+  category_successfully_deleted: "Category successfully deleted"
+  cannot_delete_category_with_posts: "Cannot delete category containing posts"
+
+  image_uploaded: "Image successfully uploaded"
+  image_deleted: "Image successfully deleted"
+  cannot_delete_image: "Cannot delete image being used as avatar or category picture"
+
+  post_created: "Post successfully created"
+  post_modified: "Post successfully updated"
+  post_deleted: "Post successfully deleted"
+
+  user_created: "User successfully created"
+  user_modified: "User successfully modified"
+  user_deleted: "User successfully deleted"
+  cannot_delete_user: "Cannot delete user containing categories"

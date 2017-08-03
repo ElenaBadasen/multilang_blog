@@ -45,3 +45,21 @@ ru:
   creating_post: "Создание поста"
   post_name: "Название поста:"
   post_content: "Текст:"
+
+  category_successfully_created: "Категория успешно создана"
+  category_successfully_modified: "Категория успешно изменена"
+  category_successfully_deleted: "Категория успешно удалена"
+  cannot_delete_category_with_posts: "Нельзя удалить категорию, в которой есть посты"
+
+  image_uploaded: "Изображение успешно загружено"
+  image_deleted: "Изображение успешно удалено"
+  cannot_delete_image: "Нельзя удалить изображение, которое используется как аватар или картинка категории."
+
+  post_created: "Пост успешно создан"
+  post_modified: "Пост успешно изменен"
+  post_deleted: "Пост успешно удален"
+
+  user_created: "Пользователь успешно создан"
+  user_modified: "Пользователь успешно изменен"
+  user_deleted: "Пользователь успешно удален"
+  cannot_delete_user: "Нельзя удалить пользователя, у которого есть категории"
