@@ -35,6 +35,12 @@
         <td><%= t('description') %></td><td><%= f.text_area :description %></td>
       </tr>
       <tr>
+        <td><%= t('english_category_name') %></td><td><%= f.text_field :english_name %></td>
+      </tr>
+      <tr>
+        <td><%= t('english_description') %></td><td><%= f.text_area :english_description %></td>
+      </tr>
+      <tr>
         <td><%= t('picture') %></td>
         <td>
           <% if @category.images.present? and @category.images[0].file.present? %>

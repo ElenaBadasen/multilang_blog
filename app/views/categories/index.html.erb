@@ -7,7 +7,11 @@
       </div>
     <% end %>
     <div class="welcome_text">
-      <%= @header_category.description %>
+      <% if I18n.locale == :en  and @header_category.english_description.present? %>
+        <%= @header_category.english_description %>
+      <% else %>
+        <%= @header_category.description %>
+      <% end %>
     </div>
   <% end %>
 
@@ -19,7 +23,12 @@
               <div class="center-cropped" style="background-image: url('<%= c.images[0].file.url %>');"></div>
           <% end %>
           <br>
-          <%= link_to c.name, category_posts_path(@username, c.path), class:"category_name_link" %>
+          <% if I18n.locale == :en  and c.english_name.present? %>
+            <%= link_to c.english_name, category_posts_path(@username, c.path), class:"category_name_link" %>
+          <% else %>
+            <%= link_to c.name, category_posts_path(@username, c.path), class:"category_name_link" %>
+          <% end %>
+
           <% if can? :manage, c %>
             <br>
             <%= link_to t('edit'), edit_category_path(@username, c.id), class:"edit_category_link" %>

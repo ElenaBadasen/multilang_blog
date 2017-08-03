@@ -9,7 +9,11 @@
         </div>
       <% end %>
       <div class="welcome_text">
-        <%= @category.description %>
+        <% if I18n.locale == :en and @category.english_description.present? %>
+          <%= @category.english_description %>
+        <% else %>
+          <%= @category.description %>
+        <% end %>
       </div>
     <% end %>
     <div class="posts">
@@ -23,7 +27,13 @@
             <%= (p.created_at.to_time + 3.hours).strftime("%Y-%m-%d %H:%M") %>
           </div>
           <div class="post_name">
-            <%= link_to p.name, post_path(@username, p.id), class:"post_name_link" %>
+            <% post_name = '' %>
+            <% if I18n.locale == :en and p.english_name.present? %>
+                <% post_name = p.english_name %>
+            <% else %>
+                <% post_name = p.name %>
+            <% end %>
+            <%= link_to post_name, post_path(@username, p.id), class:"post_name_link" %>
           </div>
           <% if can? :manage, p %>
             <div class="edit_links">
@@ -32,7 +42,11 @@
             </div>
           <% end %>
           <div class="content">
-            <%= sanitize(p.content) %>
+            <% if I18n.locale == :en and p.english_content.present? %>
+                <%= sanitize(p.english_content) %>
+            <% else %>
+                <%= sanitize(p.content) %>
+            <% end %>
           </div>
           <br>
       <% end %>

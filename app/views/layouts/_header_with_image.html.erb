@@ -4,12 +4,17 @@
       <a class="typewrite" data-period="1000" data-type='[
       <% if @header_category.present? or @category.present? %>
         <% c = @header_category.present? ? @header_category : @category %>
-        <%= c.name.split("\\n").map{|x| "\"" + x + "\"" }.join(", ") %>
+        <% name = '' %>
+        <% if I18n.locale == :en and c.english_name.present? %>
+          <% name = c.english_name %>
+        <% else %>
+          <% name = c.name %>
+        <% end %>
+        <%= name.split("\\n").map{|x| "\"" + x + "\"" }.join(", ") %>
       <% end %>
        ]'
          <% c = @header_category.present? ? @header_category : @category %>
 
-         <% p "HERE", c %>
          style="color:<%= c.color %>;"
       >
         <span class="wrap"></span>

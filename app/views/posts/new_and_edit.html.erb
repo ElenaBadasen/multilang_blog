@@ -28,6 +28,12 @@
         <td><%= t('post_content') %></td><td><%= f.text_area :content %></td>
       </tr>
       <tr>
+        <td><%= t('post_english_name') %></td><td><%= f.text_field :english_name %></td>
+      </tr>
+      <tr>
+        <td><%= t('post_english_content') %></td><td><%= f.text_area :english_content %></td>
+      </tr>
+      <tr>
         <td><%= f.submit @action == :update ? t('update') : t('create') %></td><td></td>
       </tr>
     </table>

@@ -24,6 +24,8 @@ ru:
   create: "Создать"
   main_destination: "основное"
   header_destination: "шапка"
+  english_category_name: "Название категории на английском:"
+  english_description: "Описание категории на английском:"
 
   upload_new_image: "Загрузить новое изображение"
   confirm_image_delete: "Вы уверены, что хотите удалить это изображение?"
@@ -45,6 +47,9 @@ ru:
   creating_post: "Создание поста"
   post_name: "Название поста:"
   post_content: "Текст:"
+  post_english_name: "Название поста на английском:"
+  post_english_content: "Текст на английском:"
+
 
   category_successfully_created: "Категория успешно создана"
   category_successfully_modified: "Категория успешно изменена"

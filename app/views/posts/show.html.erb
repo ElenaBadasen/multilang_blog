@@ -2,13 +2,25 @@
 <div class="main_block">
   <div class="contents">
     <div class="posts">
-      <div><%= link_to @category.name, category_posts_path(@username, @category.path), class:"category_link" %></div>
+      <% name = '' %>
+      <% if I18n.locale == :en and @category.english_name.present? %>
+          <% name = @category.english_name %>
+      <% else %>
+          <% name = @category.name %>
+      <% end %>
+      <div><%= link_to name, category_posts_path(@username, @category.path), class:"category_link" %></div>
 
       <div class="datetime">
         <%= @post.created_at.to_time.strftime("%Y-%m-%d %H:%M") %>
       </div>
       <div class="post_name">
-        <%= link_to @post.name, post_path(@username, @post.id), class:"post_name_link" %>
+        <% post_name = '' %>
+        <% if I18n.locale == :en and @post.english_name.present? %>
+            <% post_name = @post.english_name %>
+        <% else %>
+            <% post_name = @post.name %>
+        <% end %>
+        <%= link_to post_name, post_path(@username, @post.id), class:"post_name_link" %>
       </div>
       <% if can? :manage, @post %>
         <div class="edit_links">
@@ -17,7 +29,11 @@
         </div>
       <% end %>
       <div class="content">
-        <%= sanitize(@post.content) %>
+        <% if I18n.locale == :en and @post.english_content.present? %>
+          <%= sanitize(@post.english_content) %>
+        <% else %>
+          <%= sanitize(@post.content) %>
+        <% end %>
       </div>
       <br>
 
