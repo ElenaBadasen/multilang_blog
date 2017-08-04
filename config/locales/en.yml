@@ -88,3 +88,10 @@ en:
   user_modified: "User successfully modified"
   user_deleted: "User successfully deleted"
   cannot_delete_user: "Cannot delete user containing categories"
+
+  error: "Error"
+  error_404_message: "The page you were looking for doesn't exist. You may have mistyped the address or the page may have moved."
+  return_home: "Return to main page"
+  error_500_message: "Internal server error. Contact the site administrator."
+  error_403_message: "Access denied."
+  error_422_message: "Unprocessable Entity. Contact the site administrator."

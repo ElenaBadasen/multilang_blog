@@ -170,3 +170,25 @@ h2 {
   text-align: left;
   margin: 20px;
 }
+
+.outer_div {
+  z-index: 6;
+  position: relative;
+}
+
+.home a {
+  color: black;
+}
+
+.table_div {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 15px;
+  display: inline-block;
+  margin: 20px;
+}
+
+.errors_header {
+  font-size: 25px;
+  padding: 10px;
+}
