@@ -84,5 +84,27 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  Rails.application.config.middleware.use ExceptionNotification::Rack, :email => {
+#    :deliver_with => :delivcer, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
+    :email_prefix => "[idzaaus.org] ",
+    :sender_address => %{"Exception notification" <exnot@idzaaus.org>},
+    :exception_recipients => %w{tivel@idzaaus.org}
+  }
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => "idzaaus.org",
+    :user_name => "bot@idzaaus.org",
+    :password => "v5903IfI9RD1",
+    :authentication => "plain",
+    :enable_starttls_auto => true 
+  }
+
+  #config.action_mailer.delivery_method = :sendmail
+
+
   require 'carrierwave/orm/activerecord'
 end

@@ -19,6 +19,7 @@ class PostsController < ApplicationController
 
   def create
     authorize! :create, Post
+    @users = User.all
     @username = params[:username]
     @category = Category.find_by(path: params[:category_id])
     authorize! :update, @category
@@ -49,6 +50,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    @users = User.all
     @username = params[:username]
     @category = Category.find_by(path: params[:category_id])
     @post = Post.find(params[:id])
