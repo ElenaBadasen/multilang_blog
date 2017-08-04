@@ -4,6 +4,6 @@
     <%= image_tag @image.file.url, class:"big_image" %>
 <% end %>
 
-<p><%= text_field_tag "url", request.host + @image.file.url %></p>
+<p><%= text_field_tag "url", "http://" + request.host + @image.file.url %></p>
 <p><%= link_to t('all_images'), images_path %></p>
 </div>

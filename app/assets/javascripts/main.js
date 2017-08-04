@@ -85,7 +85,7 @@ $(document).ready(function() {
         }
     });
 
-    if (window.location.href.indexOf("new") > -1 || window.location.href.indexOf("edit") > -1) {
+    if (window.location.pathname.indexOf("new") > -1 || window.location.pathname.indexOf("edit") > -1) {
         var element_to_scroll_to = $('.header')[0];
         $('html, body').animate({scrollTop: $(element_to_scroll_to).offset().top}, 500);
     }

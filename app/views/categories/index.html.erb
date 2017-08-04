@@ -24,9 +24,9 @@
           <% end %>
           <br>
           <% if I18n.locale == :en  and c.english_name.present? %>
-            <%= link_to c.english_name, category_posts_path(@username, c.path), class:"category_name_link" %>
+            <%= link_to c.english_name.split("\\n").join(" "), category_posts_path(@username, c.path), class:"category_name_link" %>
           <% else %>
-            <%= link_to c.name, category_posts_path(@username, c.path), class:"category_name_link" %>
+            <%= link_to c.name.split("\\n").join(" "), category_posts_path(@username, c.path), class:"category_name_link" %>
           <% end %>
 
           <% if can? :manage, c %>

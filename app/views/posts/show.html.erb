@@ -4,9 +4,9 @@
     <div class="posts">
       <% name = '' %>
       <% if I18n.locale == :en and @category.english_name.present? %>
-          <% name = @category.english_name %>
+          <% name = @category.english_name.split("\\n").join(" ") %>
       <% else %>
-          <% name = @category.name %>
+          <% name = @category.name.split("\\n").join(" ") %>
       <% end %>
       <div><%= link_to name, category_posts_path(@username, @category.path), class:"category_link" %></div>
 

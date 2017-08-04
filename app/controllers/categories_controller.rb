@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
     @category = user.categories.create(category_params)
     @category.images << Image.new(file: category_params[:file])
     if @category.save and @category.images[0].save
-      redirect_to categories_path, notice: t('category_successfully_created')
+      redirect_to category_posts_path(@username, @category.path), notice: t('category_successfully_created')
     else
       @action = :create
       render :new_and_edit
@@ -68,7 +68,7 @@ class CategoriesController < ApplicationController
       @category.images[0].save
     end
     if @category.update(category_params) and @category.images[0].save
-      redirect_to categories_path, notice: t('category_successfully_modified')
+      redirect_to category_posts_path(@username, @category.path), notice: t('category_successfully_modified')
     else
       @action = :update
       render :new_and_edit
