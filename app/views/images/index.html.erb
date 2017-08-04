@@ -12,5 +12,5 @@
     </p>
   <% end %>
 
-  <%= will_paginate @images %>
+  <%= will_paginate @images, :previous_label => t("previous"), :next_label => t("next")  %>
 </div>

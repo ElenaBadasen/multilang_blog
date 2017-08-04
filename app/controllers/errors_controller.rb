@@ -14,4 +14,8 @@ class ErrorsController < ApplicationController
   def unprocessable_entity
     render(:status => 422)
   end
+
+  def request_entity_too_large
+    render(:status => 413)
+  end
 end

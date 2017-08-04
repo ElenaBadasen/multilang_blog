@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   match "/500", :to => "errors#internal_server_error", :via => :all
   match "/403", :to => "errors#forbidden", :via => :all
   match "/422", :to => "errors#unprocessable_entity", :via => :all
+  match "/413", :to => "errors#request_entity_too_large", :via => :all
 end
