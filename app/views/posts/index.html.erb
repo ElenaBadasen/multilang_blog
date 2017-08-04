@@ -10,9 +10,9 @@
       <% end %>
       <div class="welcome_text">
         <% if I18n.locale == :en and @category.english_description.present? %>
-          <%= @category.english_description %>
+          <%= sanitize(@category.english_description) %>
         <% else %>
-          <%= @category.description %>
+          <%= sanitize(@category.description) %>
         <% end %>
       </div>
     <% end %>

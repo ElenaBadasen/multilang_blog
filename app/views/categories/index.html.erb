@@ -8,9 +8,9 @@
     <% end %>
     <div class="welcome_text">
       <% if I18n.locale == :en  and @header_category.english_description.present? %>
-        <%= @header_category.english_description %>
+        <%= sanitize(@header_category.english_description) %>
       <% else %>
-        <%= @header_category.description %>
+        <%= sanitize(@header_category.description) %>
       <% end %>
     </div>
   <% end %>
