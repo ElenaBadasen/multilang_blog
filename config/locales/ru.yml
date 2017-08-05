@@ -82,6 +82,21 @@ ru:
 
   black_arrow: "Черная стрелка:"
 
+  delete_user_confirmation: "Вы уверены, что хотите удалить этого пользователя?"
+  new_user: "Создать нового пользователя"
+
+  back: "Назад"
+  username: "Имя пользователя:"
+  email: "E-mail:"
+  CSS: "CSS:"
+  old_password: "Старый пароль:"
+  new_password: "Новый пароль:"
+  password_confirmation: "Подтверждение пароля:"
+  avatar: "Аватар:"
+  wrong_password: "Неправильно указан текущий пароль."
+  updating_user: "Редактирование пользователя"
+  creating_user: "Создание пользователя"
+
   activerecord:
     errors:
       messages:

@@ -101,3 +101,18 @@ en:
   next: "Next"
 
   black_arrow: "Black_arrow:"
+
+  delete_user_confirmation: "Are you sure you want to delete this user?"
+  new_user: "New user"
+
+  back: "Back"
+  username: "Username:"
+  email: "E-mail:"
+  CSS: "CSS:"
+  old_password: "Old password:"
+  new_password: "New password:"
+  password_confirmation: "Password confirmation:"
+  avatar: "Avatar:"
+  wrong_password: "Wrong current password."
+  updating_user: "Updating user"
+  creating_user: "Creating user"

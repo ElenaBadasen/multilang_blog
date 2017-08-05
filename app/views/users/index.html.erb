@@ -14,8 +14,8 @@
               </div>
               <% if can? :update, u %>
                 <div class="edit_links">
-                  <%= link_to "Редактировать", edit_user_path(u.id), class:"edit_link" %>
-                  <%= link_to "Удалить", user_path(u.id), method: :delete, data: { confirm: "Вы уверены, что хотите удалить этого пользователя?" }, class:"edit_link" %>
+                  <%= link_to t('edit'), edit_user_path(u.id), class:"edit_link" %>
+                  <%= link_to t('delete'), user_path(u.id), method: :delete, data: { confirm: t('delete_user_confirmation') }, class:"edit_link" %>
                 </div>
               <% end %>
             </div>
@@ -24,7 +24,7 @@
       <% end %>
       <% if can? :create, User %>
         <tr><td>
-            <div class="new_user"><%= link_to "Создать нового пользователя", new_user_path, class:"new_user_link" %></div>
+            <div class="new_user"><%= link_to t('new_user'), new_user_path, class:"new_user_link" %></div>
         </td></tr>
       <% end %>
     </table>

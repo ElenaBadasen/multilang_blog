@@ -1,6 +1,6 @@
 <div class="new_and_edit">
 
-  <h2><%= @action == :update ? "Редактирование пользователя" : "Создание пользователя" %></h2>
+  <h2><%= @action == :update ? t('updating_user') : t('creating_user') %></h2>
   <div class="table_div">
   <table>
     <% if @user.errors.any? or !@password_correct %>
@@ -11,7 +11,7 @@
                 <li><%= msg %></li>
             <% end %>
             <% unless @password_correct %>
-              <li>Неправильно указан текущий пароль.</li>
+              <li><%= t('wrong_password') %></li>
             <% end %>
           </ul>
         </div>
@@ -24,27 +24,27 @@
         <div class="params">
           <table>
             <tr>
-              <td>Имя пользователя:</td><td><%= f.text_field :name %></td>
+              <td><%= t('username') %></td><td><%= f.text_field :name %></td>
             </tr>
             <tr>
-              <td>E-mail:</td><td><%= f.text_field :email %></td>
+              <td><%= t('email') %></td><td><%= f.text_field :email %></td>
             </tr>
             <tr>
-              <td>CSS:</td><td><%= f.text_area :custom_css %></td>
+              <td><%= t('CSS') %></td><td><%= f.text_area :custom_css %></td>
             </tr>
             <% if @action == :update %>
               <tr>
-                <td>Старый пароль:</td><td><%= f.password_field :current_password %></td>
+                <td><%= t('old_password') %></td><td><%= f.password_field :current_password %></td>
               </tr>
             <% end %>
             <tr>
-              <td>Новый пароль:</td><td><%= f.password_field :password %></td>
+              <td><%= t('new_password') %></td><td><%= f.password_field :password %></td>
             </tr>
             <tr>
-              <td>Подтверждение пароля:</td><td><%= f.password_field :password_confirmation %></td>
+              <td><%= t('password_confirmation') %></td><td><%= f.password_field :password_confirmation %></td>
             </tr>
             <tr>
-              <td>Аватар:</td>
+              <td><%= t('avatar') %></td>
               <td>
                 <% if @user.images.present? and @user.images[0].file.present? %>
                     <%= image_tag @user.images[0].file.url %>
@@ -54,7 +54,7 @@
               </td>
             </tr>
             <tr>
-              <td><%= f.submit @action == :update ? "Изменить" : "Создать" %>  <%= submit_tag 'Назад', :type => 'button', class:"back_button" %></td><td></td>
+              <td><%= f.submit @action == :update ? t('update') : t('create') %>  <%= submit_tag t('back'), :type => 'button', class:"back_button" %></td><td></td>
             </tr>
           </table>
         </div>
