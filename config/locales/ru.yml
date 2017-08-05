@@ -115,7 +115,7 @@ ru:
         too_long: "слишком длинно (максимум: %{count} символов)"
         too_short: "слишком коротко (минимум: %{count} символов)"
         wrong_length: "неправильной длины (должно быть {{count}} символов)"
-        taken: "%{attribute} уже занято"
+        taken: "уже занято"
         not_a_number: "может содержать только цифры"
         greater_than: "должно быть больше {{count}}"
         greater_than_or_equal_to: "должно быть больше или равно {{count}}"
