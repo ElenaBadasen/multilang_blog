@@ -95,7 +95,7 @@ en:
   error_500_message: "Internal server error. Contact the site administrator."
   error_403_message: "Access denied."
   error_422_message: "Unprocessable entity. Contact the site administrator."
-  error_413_message: "Entity too large. Probably you are trying to upload a file bigger than 1Mb."
+  error_413_message: "Entity too large. Probably you are trying to upload a file bigger than 1 Mb."
 
   previous: "Previous"
   next: "Next"
