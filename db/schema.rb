@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170803155820) do
+ActiveRecord::Schema.define(version: 20170805002608) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20170803155820) do
     t.string   "color",               default: ""
     t.string   "english_name"
     t.text     "english_description"
+    t.boolean  "black_arrow",         default: false
+    t.integer  "priority",            default: 0
     t.index ["name"], name: "index_categories_on_name", unique: true
     t.index ["path"], name: "index_categories_on_path", unique: true
     t.index ["user_id"], name: "index_categories_on_user_id"
@@ -50,12 +52,13 @@ ActiveRecord::Schema.define(version: 20170803155820) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "name"
-    t.text     "content",         null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.text     "content",                     null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "category_id"
     t.string   "english_name"
     t.text     "english_content"
+    t.integer  "priority",        default: 0
     t.index ["category_id"], name: "index_posts_on_category_id"
   end
 

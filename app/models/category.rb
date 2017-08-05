@@ -15,4 +15,6 @@ class Category < ApplicationRecord
   def self.any_destination_to_text(destination)
     destination == "basic" ? I18n.t('main_destination') : I18n.t('header_destination')
   end
+
+  default_scope { order(priority: :desc, created_at: :asc) }
 end

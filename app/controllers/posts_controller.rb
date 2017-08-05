@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   def index
     @username = params[:username]
     @category = Category.find_by(path: params[:category_id])
-    @posts = @category.posts
+    @posts = @category.posts.paginate(:page => params[:page], :per_page => 2)
     @users = User.all
   end
 
@@ -74,6 +74,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:name, :content, :english_name, :english_content)
+    params.require(:post).permit(:name, :content, :english_name, :english_content, :priority)
   end
 end

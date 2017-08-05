@@ -26,7 +26,13 @@
         <td><%= t('header_color') %></td><td><%= f.text_field :color %></td>
       </tr>
       <tr>
+        <td><%= t('black_arrow') %></td><td><%= f.check_box :black_arrow %></td>
+      </tr>
+      <tr>
         <td><%= t('category_path') %></td><td><%= f.text_field :path %></td>
+      </tr>
+      <tr>
+        <td><%= t('priority') %></td><td><%= f.text_field :priority %></td>
       </tr>
       <tr>
         <td><%= t('destination') %></td><td><%= f.select :destination, options_for_select(Category.destinations.keys.map{|x| [Category.any_destination_to_text(x), x]}, @category.destination) %></td>
