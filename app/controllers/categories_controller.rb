@@ -30,8 +30,11 @@ class CategoriesController < ApplicationController
     authorize! :update, user
     @header_category = user.categories.where(destination: "header")[0]
     @category = user.categories.create(category_params)
-    @category.images << Image.new(file: category_params[:file])
-    if @category.save and @category.images[0].save
+    image = Image.create(file: category_params[:file])
+    if image.valid?
+      @category.images << image
+    end
+    if @category.save
       redirect_to category_posts_path(@username, @category.path), notice: t('category_successfully_created')
     else
       @action = :create
@@ -61,12 +64,14 @@ class CategoriesController < ApplicationController
     authorize! :update, @category
     @user = User.find_by(name: params[:username])
     @header_category = @user.categories.where(destination: "header")[0]
-    if category_params[:file].present? or category_params[:file_cache].present?
+    if category_params[:file].present?
       @category.images = []
-      @category.images << Image.new(file: category_params[:file])
-      @category.images[0].save
+      image = Image.create(file: category_params[:file])
+      if image.valid?
+        @category.images << image
+      end
     end
-    if @category.update(category_params) and @category.images[0].save
+    if @category.update(category_params)
       redirect_to category_posts_path(@username, @category.path), notice: t('category_successfully_modified')
     else
       @action = :update
