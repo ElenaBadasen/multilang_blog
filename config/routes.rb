@@ -23,10 +23,10 @@ Rails.application.routes.draw do
     end
   end
 
-  get '*unmatched_route', to: 'application#not_found'
-  match "/404", :to => "errors#not_found", :via => :all
-  match "/500", :to => "errors#internal_server_error", :via => :all
-  match "/403", :to => "errors#forbidden", :via => :all
-  match "/422", :to => "errors#unprocessable_entity", :via => :all
-  match "/413", :to => "errors#request_entity_too_large", :via => :all
+  # get '*unmatched_route', to: 'application#not_found'
+  # match "/404", :to => "errors#not_found", :via => :all
+  # match "/500", :to => "errors#internal_server_error", :via => :all
+  # match "/403", :to => "errors#forbidden", :via => :all
+  # match "/422", :to => "errors#unprocessable_entity", :via => :all
+  # match "/413", :to => "errors#request_entity_too_large", :via => :all
 end

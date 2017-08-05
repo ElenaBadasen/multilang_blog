@@ -4,8 +4,7 @@ class CategoriesController < ApplicationController
     @username = params[:username]
     @user = User.find_by(name: @username)
     unless @user.present?
-      redirect_to errors_not_found_url
-      return
+      raise ActionController::RoutingError.new('Not Found')
     end
     @categories = @user.categories
     @header_category = @categories.where(destination: "header")[0]

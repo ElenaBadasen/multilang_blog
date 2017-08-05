@@ -22,7 +22,7 @@
     </div>
   </h1>
   <% c = @header_category.present? ? @header_category : @category %>
-  <% if c.black_arrow? %>
+  <% if c.present? and c.black_arrow? %>
     <div class="arrow"><img src="/images/black_arrow.png" width="100px"></div>
   <% else %>
     <div class="arrow"><img src="/images/arrow.png" width="100px"></div>
