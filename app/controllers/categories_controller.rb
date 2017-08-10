@@ -35,7 +35,11 @@ class CategoriesController < ApplicationController
       @category.images << image
     end
     if @category.save
-      redirect_to category_posts_path(@username, @category.path), notice: t('category_successfully_created')
+      if @category.destination == "header"
+        redirect_to user_path(@username), notice: t('category_successfully_created')
+      else
+        redirect_to category_posts_path(@username, @category.path), notice: t('category_successfully_created')
+      end
     else
       @action = :create
       render :new_and_edit
@@ -72,7 +76,11 @@ class CategoriesController < ApplicationController
       end
     end
     if @category.update(category_params)
-      redirect_to category_posts_path(@username, @category.path), notice: t('category_successfully_modified')
+      if @category.destination == "header"
+        redirect_to user_path(@username), notice: t('category_successfully_modified')
+      else
+        redirect_to category_posts_path(@username, @category.path), notice: t('category_successfully_modified')
+      end
     else
       @action = :update
       render :new_and_edit

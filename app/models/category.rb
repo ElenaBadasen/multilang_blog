@@ -1,6 +1,7 @@
 class Category < ApplicationRecord
   validate :path_should_be_unique_for_user
   validate :name_should_be_unique_for_user
+  validate :no_header_if_posts
 
   validates :name, presence: true
   validates :destination, presence: true
@@ -54,6 +55,12 @@ class Category < ApplicationRecord
     end
     if error
       errors.add(:name, I18n.t('should_be_unique_for_user'))
+    end
+  end
+
+  def no_header_if_posts
+    if destination == "header" and posts.count > 0
+      errors.add(:header, I18n.t('no_header_if_posts'))
     end
   end
 end

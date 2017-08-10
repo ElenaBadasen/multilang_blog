@@ -48,6 +48,10 @@ en:
   english_category_name: "Category name in English:"
   english_description: "Description in English:"
   no_typewrite: "Remove typewrite effect from header"
+  priority: "Priority:"
+  edit_header: "Edit header"
+  delete_header: "Delete header"
+
 
   upload_new_image: "Upload new image"
   confirm_image_delete: "Are you sure you want to delete this image?"
@@ -119,3 +123,44 @@ en:
   creating_user: "Creating user"
 
   should_be_unique_for_user: "should be unique for chosen user"
+  category_should_not_be_header: "has destination not allowing creating posts"
+  no_header_if_posts: "value is not allowed because the category has posts"
+
+  activerecord:
+    models:
+      category:
+        one: "Category"
+        other: "Categories"
+      image:
+        one: "Image"
+        many: "Images"
+      post:
+        one: "Post"
+        many: "Posts"
+      user:
+        one: "User"
+        many: "Users"
+    attributes:
+      category:
+        name: "Name"
+        description: "Description"
+        path: "Path"
+        destination: "Destination"
+        color: "Color"
+        english_name: "English name"
+        english_description: "English description"
+        black_arrow: "Black arrow"
+        priority: "Priority"
+        no_typewrite: "No typewrite"
+      image:
+        file: "File"
+      post:
+        name: "Name"
+        content: "Content"
+        english_name: "English name"
+        english_content: "English content"
+        priority: "Priority"
+      user:
+        name: "Name"
+        email: "Email"
+        custom_css: "Custom CSS"

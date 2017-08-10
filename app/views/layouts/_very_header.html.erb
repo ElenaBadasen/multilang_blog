@@ -1,8 +1,11 @@
 <title>
   <% if @header_category.present? or @category.present? %>
       <% c = @header_category.present? ? @header_category : @category %>
+      <% if c.present? %>
+          <%= c.user.name %>
+      <% end %>
       <% if c.name.present? %>
-          <%= c.name.split("\\n").join(" ") %>
+          <%= " | " + c.name.split("\\n").join(" ") %>
       <% end %>
   <% end %>
 

@@ -42,6 +42,9 @@
 
 <% if @header_category.present? or @category.present? %>
     <% c = @header_category.present? ? @header_category : @category %>
+    <% unless c.images[0].present? %>
+      <% c = c.user.categories.where(destination: "header")[0] %>
+    <% end %>
     <style type="text/css">
       html {
         <% if c.images[0].present? %>

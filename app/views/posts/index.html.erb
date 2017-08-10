@@ -17,7 +17,7 @@
       </div>
     <% end %>
     <div class="posts">
-      <% if can? :manage, @category and can? :create, Post %>
+      <% if can? :manage, @category and can? :create, Post and @category.destination != "header" %>
         <div><%= link_to t('new_post'), new_category_post_path(@username, @category.path), class:"new_post_link" %></div>
         <br>
         <br>
