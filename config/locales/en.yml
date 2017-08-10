@@ -47,6 +47,7 @@ en:
   header_destination: "header"
   english_category_name: "Category name in English:"
   english_description: "Description in English:"
+  no_typewrite: "Remove typewrite effect from header"
 
   upload_new_image: "Upload new image"
   confirm_image_delete: "Are you sure you want to delete this image?"

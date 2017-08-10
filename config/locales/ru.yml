@@ -26,6 +26,7 @@ ru:
   header_destination: "шапка"
   english_category_name: "Название категории на английском:"
   english_description: "Описание категории на английском:"
+  no_typewrite: "Убрать эффект пишущей машинки из заголовка"
 
   upload_new_image: "Загрузить новое изображение"
   confirm_image_delete: "Вы уверены, что хотите удалить это изображение?"

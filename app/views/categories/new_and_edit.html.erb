@@ -23,6 +23,9 @@
         <td><%= t('category_name') %></td><td><%= f.text_field :name %></td>
       </tr>
       <tr>
+        <td><%= t('no_typewrite') %></td><td><%= f.check_box :no_typewrite %></td>
+      </tr>
+      <tr>
         <td><%= t('header_color') %></td><td><%= f.text_field :color %></td>
       </tr>
       <tr>
@@ -57,7 +60,7 @@
         </td>
       </tr>
       <tr>
-        <td><%= f.submit @action == :update ? t('update') : t('create') %></td><td></td>
+        <td><%= f.submit @action == :update ? t('update') : t('create') %> <%= submit_tag t('back'), :type => 'button', class:"back_button_categories" %></td><td></td>
       </tr>
     </table>
 <% end %>

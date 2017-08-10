@@ -1,24 +1,35 @@
 <div class="welcome_image_area">
   <h1>
     <div class="typewrite_div">
-      <a class="typewrite" data-period="1000" data-type='[
       <% if @header_category.present? or @category.present? %>
         <% c = @header_category.present? ? @header_category : @category %>
-        <% name = '' %>
-        <% if I18n.locale == :en and c.english_name.present? %>
-          <% name = c.english_name %>
-        <% elsif c.name.present? %>
-          <% name = c.name %>
-        <% end %>
-        <%= name.split("\\n").map{|x| "\"" + x + "\"" }.join(", ") %>
-      <% end %>
-       ]'
-         <% c = @header_category.present? ? @header_category : @category %>
+        <% if c.present? and c.no_typewrite %>
+          <a class="no-typewrite" style="color:<%= c ? c.color : 'white' %>;">
+            <% name = '' %>
+            <% if I18n.locale == :en and c.english_name.present? %>
+                <% name = c.english_name %>
+            <% elsif c.name.present? %>
+                <% name = c.name %>
+            <% end %>
+            <%= name.split("\\n").join(", ") %>
+          </a>
+        <% elsif c.present? %>
+          <a class="typewrite" data-period="1000" data-type='[
+            <% name = '' %>
+            <% if I18n.locale == :en and c.english_name.present? %>
+              <% name = c.english_name %>
+            <% elsif c.name.present? %>
+              <% name = c.name %>
+            <% end %>
+            <%= name.split("\\n").map{|x| "\"" + x + "\"" }.join(", ") %>
 
-         style="color:<%= c ? c.color : 'white' %>;"
-      >
-        <span class="wrap"></span>
-      </a>
+           ]'
+           style="color:<%= c ? c.color : 'white' %>;"
+          >
+          <span class="wrap"></span>
+          </a>
+        <% end %>
+      <% end %>
     </div>
   </h1>
   <% c = @header_category.present? ? @header_category : @category %>

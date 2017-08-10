@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170805002608) do
+ActiveRecord::Schema.define(version: 20170810164402) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20170805002608) do
     t.text     "english_description"
     t.boolean  "black_arrow",         default: false
     t.integer  "priority",            default: 0
+    t.boolean  "no_typewrite",        default: false
     t.index ["name"], name: "index_categories_on_name", unique: true
     t.index ["path"], name: "index_categories_on_path", unique: true
     t.index ["user_id"], name: "index_categories_on_user_id"

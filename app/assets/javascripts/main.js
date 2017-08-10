@@ -59,6 +59,14 @@ $(document).ready(function() {
         window.location.href = "/";
     });
 
+    $(".back_button_categories").click(function () {
+        var url = window.location.href;
+        var the_arr = url.split('/');
+        the_arr.pop();
+        the_arr.pop();
+        window.location.href = the_arr.join('/');
+    });
+
     $(".arrow").click(function () {
         var element_to_scroll_to = $('.header')[0];
         $('html, body').animate({ scrollTop: $(element_to_scroll_to).offset().top }, 500);
@@ -91,6 +99,3 @@ $(document).ready(function() {
     }
 
 });
-
-console.log("test1");
-

@@ -15,6 +15,9 @@
     </div>
   <% end %>
 
+  <% if can? :create, Category and can? :update, @user %>
+      <p><%= link_to t('new_category'), new_category_path(@username), class:"new_category_link" %></p>
+  <% end %>
 
   <% @categories.each do |c| %>
       <% if c.destination == "basic" %>
@@ -36,8 +39,5 @@
           <% end %>
         </div>
       <% end %>
-  <% end %>
-  <% if can? :create, Category and can? :update, @user %>
-    <p><%= link_to t('new_category'), new_category_path(@username), class:"new_category_link" %></p>
   <% end %>
 </div>
