@@ -1,7 +1,7 @@
 <title>
   <% if @header_category.present? or @category.present? %>
       <% c = @header_category.present? ? @header_category : @category %>
-      <% if c.present? %>
+      <% if c.present? and c.user.present? %>
           <%= c.user.name %>
       <% end %>
       <% if c.name.present? %>

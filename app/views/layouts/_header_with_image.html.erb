@@ -47,7 +47,7 @@
     <% end %>
     <style type="text/css">
       html {
-        <% if c.images[0].present? %>
+        <% if c.images.present? and c.images[0].present? %>
           background: url("<%= c.images[0].file.url %>") no-repeat center center fixed black;
         <% end %>
         background-size: cover !important;
