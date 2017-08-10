@@ -117,3 +117,5 @@ en:
   wrong_password: "Wrong current password."
   updating_user: "Updating user"
   creating_user: "Creating user"
+
+  should_be_unique_for_user: "should be unique for chosen user"

@@ -22,8 +22,10 @@
   <% @categories.each do |c| %>
       <% if c.destination == "basic" %>
         <div class="category">
-          <%= link_to(category_posts_path(@username, c.path)) do %>
-              <div class="center-cropped" <% if c.images[0].present? %> style="background-image: url('<%= c.images[0].file.url %>');" <% end %> ></div>
+          <% if c.images[0].present? %>
+            <%= link_to(category_posts_path(@username, c.path)) do %>
+                <div class="center-cropped" style="background-image: url('<%= c.images[0].file.url %>');" ></div>
+            <% end %>
           <% end %>
           <br>
           <% if I18n.locale == :en  and c.english_name.present? %>

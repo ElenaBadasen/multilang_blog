@@ -98,6 +98,8 @@ ru:
   updating_user: "Редактирование пользователя"
   creating_user: "Создание пользователя"
 
+  should_be_unique_for_user: "должно быть уникальным для выбранного пользователя"
+
   activerecord:
     errors:
       messages:

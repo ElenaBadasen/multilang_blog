@@ -18,7 +18,7 @@
 
 <tr><td>
 <%= form_for @category, url: {action: @action}, html: { multipart: true }, method: @action == :update ? :PATCH : :POST  do |f| %>
-    <table>
+    <table class="new_and_edit_table">
       <tr>
         <td><%= t('category_name') %></td><td><%= f.text_field :name %></td>
       </tr>

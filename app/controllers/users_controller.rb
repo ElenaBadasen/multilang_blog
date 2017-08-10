@@ -22,7 +22,8 @@ class UsersController < ApplicationController
       @user.images << Image.new(file: user_params[:file])
     end
     if @user.save and @user.images[0].save
-      redirect_to users_path, notice: t('user_created')
+      @action = :update
+      render :new_and_edit, notice: t('user_created')
     else
       @action = :create
       render :new_and_edit
@@ -61,7 +62,8 @@ class UsersController < ApplicationController
       end
     end
     if @user.save and @user.images[0].save and @password_correct
-      redirect_to users_path, notice: t('user_modified')
+      @action = :update
+      render :new_and_edit, notice: t('user_modified')
     else
       @action = :update
       render :new_and_edit
