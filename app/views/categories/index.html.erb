@@ -6,13 +6,19 @@
       <%= link_to t('delete_header'), category_path(@username, @header_category.id), method: :delete, data: { confirm: t('confirm_category_delete') }, class:"edit_category_link" %>
       </div>
     <% end %>
-    <div class="welcome_text">
-      <% if I18n.locale == :en  and @header_category.english_description.present? %>
-        <%= sanitize(@header_category.english_description) %>
-      <% else %>
-        <%= sanitize(@header_category.description) %>
-      <% end %>
-    </div>
+    <% if @header_category.description.present? %>
+      <div class="welcome_text">
+        <% if I18n.locale != :en %>
+          <%= sanitize(@header_category.description) %>
+        <% end %>
+      </div>
+    <% elsif @header_category.english_description.present? %>
+      <div class="welcome_text">
+        <% if I18n.locale == :en %>
+            <%= sanitize(@header_category.english_description) %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 
   <% if can? :create, Category and can? :update, @user %>
@@ -22,22 +28,25 @@
   <% @categories.each do |c| %>
       <% if c.destination == "basic" %>
         <div class="category">
+
           <% if c.images[0].present? %>
             <%= link_to(category_posts_path(@username, c.path)) do %>
                 <div class="center-cropped" style="background-image: url('<%= c.images[0].file.url %>');" ></div>
             <% end %>
           <% end %>
-          <br>
+
+          <p>
           <% if I18n.locale == :en  and c.english_name.present? %>
             <%= link_to c.english_name.split("\\n").join(" "), category_posts_path(@username, c.path), class:"category_name_link" %>
           <% else %>
             <%= link_to c.name.split("\\n").join(" "), category_posts_path(@username, c.path), class:"category_name_link" %>
           <% end %>
-
+          </p>
           <% if can? :manage, c %>
-            <br>
+            <p>
             <%= link_to t('edit'), edit_category_path(@username, c.id), class:"edit_category_link" %>
             <%= link_to t('delete'), category_path(@username, c.id), method: :delete, data: { confirm: t('confirm_category_delete') }, class:"edit_category_link" %>
+            </p>
           <% end %>
         </div>
       <% end %>

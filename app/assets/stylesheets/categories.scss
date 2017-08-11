@@ -282,3 +282,11 @@ h1 {
 .new_and_edit_table td {
   padding: 5px;
 }
+
+a:hover {
+  text-decoration: underline;
+}
+
+a.category_name_link:hover, a.post_name_link:hover, a.datetime_link:hover {
+  text-decoration: none;
+}
