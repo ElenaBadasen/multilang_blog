@@ -111,4 +111,8 @@ $(document).ready(function() {
     jQuery('.comfortable_code').click(function() { selectAllText(jQuery(this)) });
 });
 
-
+$(document).ready(function() {
+    $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+});
