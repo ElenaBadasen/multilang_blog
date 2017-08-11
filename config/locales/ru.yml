@@ -30,6 +30,8 @@ ru:
   priority: "Приоритет:"
   edit_header: "Редактировать шапку"
   delete_header: "Удалить шапку"
+  edit_category: "Редактировать категорию"
+  delete_category: "Удалить категорию"
 
   upload_new_image: "Загрузить новое изображение"
   confirm_image_delete: "Вы уверены, что хотите удалить это изображение?"

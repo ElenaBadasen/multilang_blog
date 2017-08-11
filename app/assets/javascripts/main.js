@@ -102,4 +102,13 @@ $(document).ready(function() {
         $('html, body').animate({scrollTop: $(element_to_scroll_to).offset().top}, 500);
     }
 
+
+    function selectAllText(textbox) {
+        textbox.focus();
+        textbox.select();
+    }
+
+    jQuery('.comfortable_code').click(function() { selectAllText(jQuery(this)) });
 });
+
+

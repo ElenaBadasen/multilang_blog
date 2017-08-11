@@ -51,6 +51,8 @@ en:
   priority: "Priority:"
   edit_header: "Edit header"
   delete_header: "Delete header"
+  edit_category: "Edit category"
+  delete_category: "Delete category"
 
 
   upload_new_image: "Upload new image"

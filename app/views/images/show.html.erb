@@ -3,7 +3,9 @@
 <% if @image.file.present? %>
     <%= image_tag @image.file.url, class:"big_image" %>
 <% end %>
-
-<p><%= text_field_tag "url", "http://" + request.host + @image.file.url %></p>
+<% full_url = "http://" + request.host + @image.file.url %>
+<p><%= text_field_tag "url", full_url, class:"comfortable_code" %></p>
+<p><%= text_field_tag "img", "<img src=\"" + full_url + "\">", class:"comfortable_code" %></p>
+<p><%= text_field_tag "markdown_img", "![](" + full_url + ")", class:"comfortable_code" %></p>
 <p><%= link_to t('all_images'), images_path %></p>
 </div>

@@ -4,8 +4,8 @@
     <% if @category.present? %>
       <% if can? :manage, @category %>
         <div>
-        <%= link_to t('edit'), edit_category_path(@username, @category.id), class:"edit_category_link" %>
-        <%= link_to t('delete'), category_path(@username, @category.id), method: :delete, data: { confirm: t('confirm_category_delete') }, class:"edit_category_link" %>
+        <%= link_to t('edit_category'), edit_category_path(@username, @category.id), class:"edit_category_link" %>
+        <%= link_to t('delete_category'), category_path(@username, @category.id), method: :delete, data: { confirm: t('confirm_category_delete') }, class:"edit_category_link" %>
         </div>
       <% end %>
       <div class="welcome_text">
