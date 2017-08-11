@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     end
     if @user.save and @user.images[0].save
       @action = :update
-      render :new_and_edit, notice: t('user_created')
+      render :new_and_edit, :flash => { :success => t('user_created') }
     else
       @action = :create
       render :new_and_edit
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
     end
     if @user.save and @user.images[0].save and @password_correct
       @action = :update
-      render :new_and_edit, notice: t('user_modified')
+      render :new_and_edit, :flash => { :success => t('user_modified') }
     else
       @action = :update
       render :new_and_edit
@@ -79,9 +79,9 @@ class UsersController < ApplicationController
     end
     if delete_user
       @user.delete
-      redirect_to users_path, notice: t('user_deleted')
+      redirect_to users_path, :flash => { :success => t('user_deleted') }
     else
-      redirect_to users_path, notice: t('cannot_delete_user')
+      redirect_to users_path, :flash => { :error => t('cannot_delete_user') }
     end
   end
 

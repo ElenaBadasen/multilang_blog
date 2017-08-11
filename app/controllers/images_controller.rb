@@ -16,7 +16,7 @@ class ImagesController < ApplicationController
     @image = Image.create(image_params)
     @image.file = image_params[:file]
     if @image.save
-      redirect_to image_path(@image.id), notice: t('image_uploaded')
+      redirect_to image_path(@image.id), :flash => { :success => t('image_uploaded') }
     else
       @action = :create
       render :new
@@ -58,9 +58,9 @@ class ImagesController < ApplicationController
 
     if delete_image
       @image.delete
-      redirect_to images_path, notice: t('image_deleted')
+      redirect_to images_path, :flash => { :success => t('image_deleted') }
     else
-      redirect_to images_path, notice: t('cannot_delete_image')
+      redirect_to images_path, :flash => { :error => t('cannot_delete_image') }
     end
   end
 

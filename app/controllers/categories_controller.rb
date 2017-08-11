@@ -37,9 +37,9 @@ class CategoriesController < ApplicationController
     end
     if @category.save
       if @category.destination == "header"
-        redirect_to categories_path(@username), notice: t('category_successfully_created')
+        redirect_to categories_path(@username), :flash => { :success => t('category_successfully_created') }
       else
-        redirect_to category_posts_path(@username, @category.path), notice: t('category_successfully_created')
+        redirect_to category_posts_path(@username, @category.path), :flash => { :success => t('category_successfully_created') }
       end
     else
       @action = :create
@@ -78,9 +78,9 @@ class CategoriesController < ApplicationController
     end
     if @category.update(category_params)
       if @category.destination == "header"
-        redirect_to categories_path(@username), notice: t('category_successfully_modified')
+        redirect_to categories_path(@username), :flash => { :success => t('category_successfully_modified') }
       else
-        redirect_to category_posts_path(@username, @category.path), notice: t('category_successfully_modified')
+        redirect_to category_posts_path(@username, @category.path), :flash => { :success => t('category_successfully_modified') }
       end
     else
       @action = :update
@@ -97,9 +97,9 @@ class CategoriesController < ApplicationController
     end
     if delete_category
       @category.delete
-      redirect_to categories_path, notice: t('category_successfully_deleted')
+      redirect_to categories_path, :flash => { :success => t('category_successfully_deleted') }
     else
-      redirect_to categories_path, notice: t('cannot_delete_category_with_posts')
+      redirect_to categories_path, :flash => { :error => t('cannot_delete_category_with_posts') }
     end
   end
 
