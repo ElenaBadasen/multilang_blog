@@ -3,7 +3,8 @@ class PostsController < ApplicationController
     @username = params[:username]
     @category = Category.find_by(path: params[:category_id])
     unless @category.present?
-      raise ActionController::RoutingError.new('Not Found')
+      render :file => 'public/404.html', :status => :not_found, :layout => false
+      return
     end
     @posts = @category.posts.paginate(:page => params[:page], :per_page => 30)
     @users = User.all

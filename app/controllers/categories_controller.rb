@@ -4,7 +4,8 @@ class CategoriesController < ApplicationController
     @username = params[:username]
     @user = User.find_by(name: @username)
     unless @user.present?
-      raise ActionController::RoutingError.new('Not Found')
+      render :file => 'public/404.html', :status => :not_found, :layout => false
+      return
     end
     @categories = @user.categories
     @header_category = @categories.where(destination: "header")[0]
