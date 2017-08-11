@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
     { :locale => ((I18n.locale == I18n.default_locale) ? nil : I18n.locale) }
   end
 
-  # def not_found
-  #   render :file => 'public/404.html', :status => :not_found, :layout => false
-  # end
+  def not_found
+    render :file => 'public/404.html', :status => :not_found, :layout => false
+  end
 
   # rescue_from StandardError do |exception|
   #   ExceptionNotifier.notify_exception(exception, :env => request.env)
