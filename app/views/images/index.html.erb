@@ -4,7 +4,8 @@
   <% @images.each do |image| %>
     <p>
       <% if image.file.present? %>
-          <div class="img_div"><%= link_to(image_tag(image.file.url, style:"max-width:600px;"), image_path(image)) %></div>
+        <div class="img_div"><%= link_to(image_tag(image.file.url, style:"max-width:600px;"), image_path(image)) %></div>
+        <div class="filename_div"><%= image.file.current_path.split("/").last %></div>
       <% else %>
         Нет файла
       <% end %>
