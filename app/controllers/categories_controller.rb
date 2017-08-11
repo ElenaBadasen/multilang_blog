@@ -37,7 +37,7 @@ class CategoriesController < ApplicationController
     end
     if @category.save
       if @category.destination == "header"
-        redirect_to user_path(@username), notice: t('category_successfully_created')
+        redirect_to categories_path(@username), notice: t('category_successfully_created')
       else
         redirect_to category_posts_path(@username, @category.path), notice: t('category_successfully_created')
       end
@@ -78,7 +78,7 @@ class CategoriesController < ApplicationController
     end
     if @category.update(category_params)
       if @category.destination == "header"
-        redirect_to user_path(@username), notice: t('category_successfully_modified')
+        redirect_to categories_path(@username), notice: t('category_successfully_modified')
       else
         redirect_to category_posts_path(@username, @category.path), notice: t('category_successfully_modified')
       end
