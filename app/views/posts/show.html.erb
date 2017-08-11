@@ -8,7 +8,7 @@
       <% else %>
           <% name = @category.name.split("\\n").join(" ") %>
       <% end %>
-      <div><%= link_to name, category_posts_path(@username, @category.path), class:"category_link" %></div>
+      <div class="category_link_div"><%= link_to name, category_posts_path(@username, @category.path), class:"category_link" %></div>
 
       <div class="datetime">
         <%= @post.created_at.to_time.strftime("%Y-%m-%d %H:%M") %>

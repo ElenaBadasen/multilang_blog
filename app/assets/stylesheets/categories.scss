@@ -287,6 +287,10 @@ a:hover {
   text-decoration: underline;
 }
 
-a.category_name_link:hover, a.post_name_link:hover, a.datetime_link:hover, a.typewrite:hover, a.no-typewrite:hover {
+a.category_name_link:hover, a.post_name_link:hover, a.datetime_link:hover, a.typewrite:hover, a.no-typewrite:hover, a.category_link:hover {
   text-decoration: none;
+}
+
+.category_link_div {
+  padding-bottom: 20px;
 }
