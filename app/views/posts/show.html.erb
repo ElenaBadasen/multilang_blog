@@ -20,19 +20,19 @@
         <% else %>
             <% post_name = @post.name %>
         <% end %>
-        <%= link_to post_name, post_path(@username, @post.id), class:"post_name_link" %>
+        <%= link_to post_name, category_post_path(@username, @post.category.name, @post.id), class:"post_name_link" %>
       </div>
       <% if can? :manage, @post %>
         <div class="edit_links">
-          <%= link_to t('edit'), edit_post_path(@username, @post.id), class:"edit_link" %>
-          <%= link_to t('delete'), post_path(@username, @post.id), method: :delete, data: { confirm: t('confirm_post_delete') }, class:"edit_link" %>
+          <%= link_to t('edit'), edit_category_post_path(@username, @post.category.name, @post.id), class:"edit_link" %>
+          <%= link_to t('delete'), category_post_path(@username, @post.category.name, @post.id), method: :delete, data: { confirm: t('confirm_post_delete') }, class:"edit_link" %>
         </div>
       <% end %>
       <div class="content">
         <% if I18n.locale == :en and @post.english_content.present? %>
-          <%= sanitize(@post.english_content) %>
+          <%=  sanitize(BlueCloth.new(@post.english_content).to_html) %>
         <% else %>
-          <%= sanitize(@post.content) %>
+          <%=  sanitize(BlueCloth.new(@post.content).to_html) %>
         <% end %>
       </div>
       <br>

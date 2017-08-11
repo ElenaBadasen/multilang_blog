@@ -41,6 +41,7 @@ GEM
     arel (7.1.4)
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bluecloth (2.2.0)
     builder (3.2.3)
     byebug (9.0.6)
     cancancan (2.0.0)
@@ -167,6 +168,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (= 3.1.11)
+  bluecloth (>= 2.0.0)
   byebug
   cancancan (~> 2.0)
   carrierwave (~> 1.0)

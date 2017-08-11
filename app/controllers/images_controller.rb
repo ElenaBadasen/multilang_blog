@@ -57,6 +57,7 @@ class ImagesController < ApplicationController
     end
 
     if delete_image
+      @image.remove_file!
       @image.delete
       redirect_to images_path, :flash => { :success => t('image_deleted') }
     else

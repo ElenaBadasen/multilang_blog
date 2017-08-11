@@ -18,6 +18,8 @@ gem 'will_paginate', '~> 3.1.0'
 
 gem 'cancancan', '~> 2.0'
 
+gem 'bluecloth', '>= 2.0.0'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server

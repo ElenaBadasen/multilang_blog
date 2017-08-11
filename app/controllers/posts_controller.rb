@@ -60,7 +60,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     authorize! :update, @post
     if @post.update(post_params)
-      redirect_to post_path(params[:username], @post), :flash => { :success => t('post_modified') }
+      redirect_to category_post_path(params[:username], @post.category.name, @post), :flash => { :success => t('post_modified') }
     else
       @action = :update
       render :new_and_edit

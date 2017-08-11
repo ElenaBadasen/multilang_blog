@@ -10,9 +10,9 @@
       <% end %>
       <div class="welcome_text">
         <% if I18n.locale == :en and @category.english_description.present? %>
-          <%= sanitize(@category.english_description) %>
+          <%=  sanitize(BlueCloth.new(@category.english_description).to_html) %>
         <% else %>
-          <%= sanitize(@category.description) %>
+          <%=  sanitize(BlueCloth.new(@category.description).to_html) %>
         <% end %>
       </div>
     <% end %>
@@ -24,7 +24,7 @@
       <% end %>
       <% @posts.each do |p| %>
           <div class="datetime">
-            <%= link_to (p.created_at.to_time + 3.hours).strftime("%Y-%m-%d %H:%M"), post_path(@username, p.id), class:"datetime_link" %>
+            <%= link_to (p.created_at.to_time + 3.hours).strftime("%Y-%m-%d %H:%M"), category_post_path(@username, p.category.name, p.id), class:"datetime_link" %>
           </div>
           <div class="post_name">
             <% post_name = '' %>
@@ -33,19 +33,19 @@
             <% else %>
                 <% post_name = p.name %>
             <% end %>
-            <%= link_to post_name, post_path(@username, p.id), class:"post_name_link" %>
+            <%= link_to post_name, category_post_path(@username, p.category.name, p.id), class:"post_name_link" %>
           </div>
           <% if can? :manage, p %>
             <div class="edit_links">
-              <%= link_to t('edit'), edit_post_path(@username, p.id), class:"edit_link" %>
-              <%= link_to t('delete'), post_path(@username, p.id), method: :delete, data: { confirm: t('confirm_post_delete') }, class:"edit_link" %>
+              <%= link_to t('edit'), edit_category_post_path(@username, p.category.name, p.id), class:"edit_link" %>
+              <%= link_to t('delete'), category_post_path(@username, p.category.name, p.id), method: :delete, data: { confirm: t('confirm_post_delete') }, class:"edit_link" %>
             </div>
           <% end %>
           <div class="content">
             <% if I18n.locale == :en and p.english_content.present? %>
-                <%= sanitize(p.english_content) %>
+                <%=  sanitize(BlueCloth.new(p.english_content).to_html) %>
             <% else %>
-                <%= sanitize(p.content) %>
+                <%=  sanitize(BlueCloth.new(p.content).to_html) %>
             <% end %>
           </div>
           <br>

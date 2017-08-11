@@ -15,11 +15,11 @@ Rails.application.routes.draw do
     resources :images
 
     scope ':username' do
-      resources :categories do
-        resources :posts, shallow: true
-      end
-
       root to: 'categories#index', as: 'main_page'
+
+      resources :categories, path: '' do
+        resources :posts, path: ''
+      end
     end
   end
 

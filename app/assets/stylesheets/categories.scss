@@ -316,3 +316,23 @@ a.category_name_link:hover, a.post_name_link:hover, a.datetime_link:hover, a.typ
   width: 700px;
   background-color: #ffbccb;
 }
+
+p {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+code, pre {
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  font-size: 20px;
+}
+
+pre code {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+}

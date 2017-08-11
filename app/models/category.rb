@@ -1,9 +1,7 @@
 class Category < ApplicationRecord
   validate :path_should_be_unique_for_user
-  validate :name_should_be_unique_for_user
   validate :no_header_if_posts
 
-  validates :name, presence: true
   validates :destination, presence: true
   validates :path, presence: true
   belongs_to :user
@@ -37,24 +35,6 @@ class Category < ApplicationRecord
     end
     if error
       errors.add(:path, I18n.t('should_be_unique_for_user'))
-    end
-  end
-
-  def name_should_be_unique_for_user
-    if name.present?
-      error = false
-      user.categories.each do |c|
-        if c == self
-          next
-        end
-        if c.name == name
-          error = true
-          break
-        end
-      end
-    end
-    if error
-      errors.add(:name, I18n.t('should_be_unique_for_user'))
     end
   end
 
