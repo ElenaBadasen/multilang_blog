@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       log_in user
-      redirect_to categories_path(user.name)
+      redirect_to main_page_path(user.name)
     else
       render :new
     end

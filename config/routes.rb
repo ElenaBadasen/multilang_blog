@@ -17,9 +17,13 @@ Rails.application.routes.draw do
     scope ':username' do
       root to: 'categories#index', as: 'main_page'
 
-      resources :categories, path: '' do
+      resources :categories, only: [:edit, :update, :new, :create, :destroy]
+
+      resources :categories, path: '', only: [:index, :show] do
         resources :posts, path: ''
       end
+
+
     end
   end
 
