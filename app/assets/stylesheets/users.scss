@@ -194,3 +194,10 @@ h2 {
   font-size: 25px;
   padding: 10px;
 }
+
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
