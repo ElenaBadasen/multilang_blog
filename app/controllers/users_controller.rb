@@ -16,12 +16,13 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     @user.member = true
     @password_correct = true
-
-
-    if user_params[:file].present?
-      @user.images << Image.new(file: user_params[:file])
+    image = Image.create(file: user_params[:file])
+    if image.valid?
+      @user.images << image
     end
-    if @user.save and @user.images[0].save
+
+    if @user.save
+      params[:id] = @user.id
       @action = :update
       render :new_and_edit, :flash => { :success => t('user_created') }
     else

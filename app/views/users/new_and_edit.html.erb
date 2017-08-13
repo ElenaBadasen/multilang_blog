@@ -20,7 +20,8 @@
 
 
     <tr><td>
-    <%= form_for @user, url: {action: @action}, html: { multipart: true }, method: @action == :update ? :PATCH : :POST do |f| %>
+    <% p "HERE", @user.id, @action %>
+    <%= form_for @user, action: @action, html: { multipart: true }, method: @action == :update ? :PATCH : :POST do |f| %>
         <div class="params">
           <table>
             <tr>
