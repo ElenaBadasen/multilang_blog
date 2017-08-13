@@ -25,7 +25,7 @@
         <td><%= t('post_name') %></td><td><%= f.text_field :name %></td>
       </tr>
       <tr>
-        <td><%= t('priority') %></td><td><%= f.text_field :priority %></td>
+        <td><%= t('priority') %></td><td><%= f.text_field :priority, type: "number", max: 2147483647  %></td>
       </tr>
       <tr>
         <td><%= t('post_content') %></td><td><%= f.text_area :content %></td>
