@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html <% if I18n.locale == :en %> <%= 'lang="en"' %> <% else %> <%= 'lang="ru"' %> <% end %> >
 <head>
   <%= render partial: "layouts/very_header" %>
 </head>
