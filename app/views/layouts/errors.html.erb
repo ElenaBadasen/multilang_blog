@@ -7,10 +7,10 @@
   <%= stylesheet_link_tag    'users', media: 'all' %>
   <%= javascript_include_tag 'application' %>
 
-  <% render partial: "layouts/yandex_metrika" %>
 </head>
 
 <body>
+<% render partial: "layouts/yandex_metrika" %>
 <img class="bg" src="/images/main_background.jpg">
 
 <% flash.each do |key, value| %>
