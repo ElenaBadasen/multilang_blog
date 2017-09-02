@@ -3,15 +3,12 @@
     <div class="link_div"><%= link_to t('home'), users_path, class:"menu_link" %></div>
     <% @users.each do |u| %>
         <div class="link_div">
-          <%= link_to u.name, main_page_path(u.name), class:"menu_link", id:u.name %>
+          <% if u.name == @username %>
+              <%= link_to u.name, main_page_path(u.name), class:"menu_link username_link", id:u.name %>
+          <% else %>
+              <%= link_to u.name, main_page_path(u.name), class:"menu_link", id:u.name %>
+          <% end %>
         </div>
-        <% if u.name == @username %>
-            <style type="text/css">
-              #<%= u.name %> {
-                font-weight: bold;
-              }
-            </style>
-        <% end %>
     <% end %>
     <% if params[:locale] == "en" %>
         <%= link_to 'Русский', url_for( :locale => nil ), class:"menu_link" %>

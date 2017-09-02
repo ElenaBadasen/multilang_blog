@@ -44,9 +44,10 @@ body {
   text-align: center;
 }
 
-h1 {
+.typewrite {
   font-size: 100px;
   margin: 0px;
+  font-weight: bold;
 }
 
 .wrap {
@@ -335,4 +336,8 @@ pre code {
   padding: 0;
   background-color: transparent;
   border: 0;
+}
+
+.username_link {
+  font-weight: bold;
 }
