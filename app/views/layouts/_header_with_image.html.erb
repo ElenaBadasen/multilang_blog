@@ -35,33 +35,10 @@
     </div>
   <% c = @header_category.present? ? @header_category : @category %>
   <% if c.present? and c.black_arrow? %>
-    <div class="arrow"><img src="/images/black_arrow.png" width="100px"></div>
+    <div class="arrow"><img src="/images/black_arrow.png" width="100" alt="black_arrow"></div>
   <% else %>
-    <div class="arrow"><img src="/images/arrow.png" width="100px"></div>
+    <div class="arrow"><img src="/images/arrow.png" width="100" alt="arrow"></div>
   <% end %>
 </div>
 
-<% if @header_category.present? or @category.present? %>
-    <% c = @header_category.present? ? @header_category : @category %>
-    <% unless c.images[0].present? %>
-      <% if c.present? and c.user.present? and c.user.categories.present? %>
-        <% c = c.user.categories.where(destination: "header")[0] %>
-      <% end %>
-    <% end %>
-    <style type="text/css">
-      html {
-        <% if c.present? and c.images.present? and c.images[0].present? %>
-          background: url("<%= c.images[0].file.url %>") no-repeat center center fixed black;
-        <% end %>
-        background-size: cover !important;
-      }
-    </style>
-<% end %>
-
 <%= render partial: "layouts/header" %>
-
-<% if @users.where(name: @username)[0].custom_css.present? %>
-    <style type="text/css">
-      <%= sanitize(@users.where(name: @username)[0].custom_css) %>
-    </style>
-<% end %>
