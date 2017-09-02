@@ -36,7 +36,7 @@
     </style>
 <% end %>
 
-<% if @users.where(name: @username)[0].custom_css.present? %>
+<% if @users.present? and @users.where(name: @username)[0].custom_css.present? %>
     <style type="text/css">
       <%= sanitize(@users.where(name: @username)[0].custom_css) %>
     </style>
