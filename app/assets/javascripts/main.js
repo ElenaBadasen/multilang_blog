@@ -116,3 +116,14 @@ $(document).ready(function() {
         hljs.highlightBlock(block);
     });
 });
+
+$(document).ready(function() {
+    $('img').each(function() {
+        var attr = $(this).attr('alt');
+        if (typeof attr == typeof undefined || attr == false) {
+            var $img = $(this);
+            var filename = $img.attr('src')
+            $img.attr('alt', filename.substring(filename.lastIndexOf('/') + 1, filename.lastIndexOf('.')));
+        }
+    });
+});
