@@ -1,6 +1,7 @@
 <div class="welcome_image_area">
-  <h1>
+
     <div class="typewrite_div">
+      <h1>
       <% if @header_category.present? or @category.present? %>
         <% c = @header_category.present? ? @header_category : @category %>
         <% if c.present? and c.no_typewrite %>
@@ -30,8 +31,8 @@
           </a>
         <% end %>
       <% end %>
+      </h1>
     </div>
-  </h1>
   <% c = @header_category.present? ? @header_category : @category %>
   <% if c.present? and c.black_arrow? %>
     <div class="arrow"><img src="/images/black_arrow.png" width="100px"></div>
