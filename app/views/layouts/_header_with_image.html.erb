@@ -24,7 +24,7 @@
             <%= name.split("\\n").map{|x| "\"" + x + "\"" }.join(", ") %>
 
            ]'
-           style="color:<%= c ? c.color : 'white' %>;"
+           style="color:<%= c and c.color ? c.color : 'white' %>;"
           >
           <span class="wrap"></span>
           </a>
