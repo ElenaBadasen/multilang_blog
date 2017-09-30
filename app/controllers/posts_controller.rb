@@ -28,6 +28,9 @@ class PostsController < ApplicationController
     @category = Category.find_by(path: params[:category_id])
     authorize! :update, @category
     @post = @category.posts.create(post_params)
+    if @post.created_at.nil?
+      @post.created_at = DateTime.now
+    end
     if @post.save
       redirect_to category_posts_path(params[:username], @category.path), :flash => { :success => t('post_created') }
     else
@@ -78,6 +81,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:name, :content, :english_name, :english_content, :priority)
+    params.require(:post).permit(:name, :content, :english_name, :english_content, :priority, :created_at)
   end
 end

@@ -55,7 +55,7 @@ ru:
   post_content: "Текст:"
   post_english_name: "Название поста на английском:"
   post_english_content: "Текст на английском:"
-
+  created_at: "Дата и время:"
 
   category_successfully_created: "Категория успешно создана"
   category_successfully_modified: "Категория успешно изменена"

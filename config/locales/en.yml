@@ -77,6 +77,8 @@ en:
   post_content: "Content:"
   post_english_name: "Post name in English:"
   post_english_content: "Content in English:"
+  created_at: "Date and time:"
+
 
   category_successfully_created: "Category successfully created"
   category_successfully_modified: "Category successfully modified"

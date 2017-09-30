@@ -25,6 +25,9 @@
         <td><%= t('post_name') %></td><td><%= f.text_field :name %></td>
       </tr>
       <tr>
+        <td><%= t('created_at') %></td><td><%= f.text_field :created_at %></td>
+      </tr>
+      <tr>
         <td><%= t('priority') %></td><td><%= f.text_field :priority, type: "number", max: 2147483647  %></td>
       </tr>
       <tr>

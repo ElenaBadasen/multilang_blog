@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   validate :category_is_not_header
-  validates :content, presence: true
+  validates :content, :created_at, presence: true
   belongs_to :category
   default_scope { order(priority: :desc, created_at: :desc) }
 
