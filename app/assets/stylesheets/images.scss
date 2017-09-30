@@ -1,7 +1,7 @@
 .all {
   width: 770px;
   background: white;
-  display: inline-block;
+  display: block;
   text-align: left;
   padding: 20px;
 }
@@ -16,10 +16,18 @@ body {
   height: 100vh;
 }
 
+.outer {
+  text-align: center;
+}
+
+.second {
+  text-align: center;
+  display: inline-block;
+}
+
 .header {
   background: white;
   width: 770px;
-  display: inline-block;
 }
 
 a {

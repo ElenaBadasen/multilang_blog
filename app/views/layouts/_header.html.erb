@@ -1,36 +1,37 @@
-<div class="second">
-  <div class="header">
-    <div class="link_div"><%= link_to t('home'), users_path, class:"menu_link" %></div>
-    <% @users.each do |u| %>
-        <div class="link_div">
-          <% if u.name == @username %>
-              <%= link_to u.name, main_page_path(u.name), class:"menu_link username_link", id:u.name %>
-          <% else %>
-              <%= link_to u.name, main_page_path(u.name), class:"menu_link", id:u.name %>
-          <% end %>
-        </div>
-    <% end %>
-    <% if params[:locale] == "en" %>
-        <%= link_to 'Русский', url_for( :locale => nil ), class:"menu_link" %>
-    <% else %>
-        <%= link_to 'English', url_for( :locale => 'en' ), class:"menu_link" %>
-    <% end %>
-    <% if current_user.present? %>
-        <div class="link_div"><%= link_to t('edit_images'), images_path, class:"menu_link" %></div>
-        <div class="link_div"><%= t('you_are_logged_in_as') %><b><%= current_user.name %></b></div>
-        <div class="link_div"><%= link_to t('logout'), logout_path, method: :delete, class:"menu_link" %></div>
-    <% end %>
-  </div>
-
-  <% if flash.count > 0 %>
-    <div class="flash_div">
-    <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-    <% end %>
+<div class="outer">
+  <div class="second">
+    <div class="header">
+      <div class="link_div"><%= link_to t('home'), users_path, class:"menu_link" %></div>
+      <% @users.each do |u| %>
+          <div class="link_div">
+            <% if u.name == @username %>
+                <%= link_to u.name, main_page_path(u.name), class:"menu_link username_link", id:u.name %>
+            <% else %>
+                <%= link_to u.name, main_page_path(u.name), class:"menu_link", id:u.name %>
+            <% end %>
+          </div>
+      <% end %>
+      <% if params[:locale] == "en" %>
+          <%= link_to 'Русский', url_for( :locale => nil ), class:"menu_link" %>
+      <% else %>
+          <%= link_to 'English', url_for( :locale => 'en' ), class:"menu_link" %>
+      <% end %>
+      <% if current_user.present? %>
+          <div class="link_div"><%= link_to t('edit_images'), images_path, class:"menu_link" %></div>
+          <div class="link_div"><%= t('you_are_logged_in_as') %><b><%= current_user.name %></b></div>
+          <div class="link_div"><%= link_to t('logout'), logout_path, method: :delete, class:"menu_link" %></div>
+      <% end %>
     </div>
-  <% end %>
 
-  <%= yield %>
+    <% if flash.count > 0 %>
+      <div class="flash_div">
+      <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+  </div>
 </div>
-
 <div class="up"><a class="up_link"><%= t('up') %></a></div>
